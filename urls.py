@@ -18,7 +18,9 @@ urlpatterns = patterns("",
     url(r"^admin/", include(admin.site.urls)),
 
 	url(r'^accounts/login/$', 'accounts.views.login' ),
-    url(r'^accounts/logout/$', logout_then_login),
+    url(r'^accounts/logout/$', 'accounts.views.logout'),
+    url(r'^accounts/settings/$', 'accounts.views.settings'),
+
 )
 
 

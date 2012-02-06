@@ -30,15 +30,16 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
     <style type="text/css">
-    .span12, .container {
-        /*width:210px;*/
+    .span12,.container {
+        width:210px;
     }
     </style>
   </head>
 
   <body>
 
-    <div class="container">
+    <div class="container" >
+      <div>
         <h1>PABX IP</h1>
         <p>Faça o login para continuar.</p>
         <form class="login uniForm" method="POST" action=".">{% csrf_token %}
@@ -62,6 +63,10 @@
                                         
         </div>
 
+
+          <p style="color:#FF0000;">{{erro}}</p>
+        
+
         <div class="form_block" style="padding-bottom:8px;">
             <a href="/account/password_reset/">Esqueci minha senha</a>
         </div>
@@ -69,10 +74,11 @@
         <input type="hidden" name="next" value="/">
         
         <div class="form_block">
-          <input type="submit" value="Log in &raquo;" />
+          <input type="submit" value="Log in &raquo;" class="btn btn-primary btn-large" />
         </div>
         </fieldset>
-      </form>
+        </form>
+      </div>
     </div> <!-- /container -->
 
     <!-- Le javascript

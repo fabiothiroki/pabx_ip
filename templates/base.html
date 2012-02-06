@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}PABX IP | Página Inicial{% endblock %}</title>
+    <title>PABX IP | {{ title }}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -43,7 +43,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">PABX IP</a>
+          <a class="brand" href="/">PABX IP</a>
           <div class="nav-collapse">
             <!--
             <ul class="nav">
@@ -53,7 +53,10 @@
               <li><a href="#contact">Contact</a></li>
             </ul>
             -->
-            <p class="navbar-text pull-right">Logado como <a href="#">{{ request.session.username }}</a></p>
+            <p class="navbar-text pull-right">
+              <a href="#"><i class="icon-user icon-white"></i> {{ request.session.username }}</a>
+              <a href="{% url accounts.views.logout %}">Sair</a>
+            </p>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -65,11 +68,12 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
+              {% if request.session.is_admin %}
               <li class="nav-header">Administração</li>
-              <li class="active"><a href="#">Usuários</a></li>
-
+              <li class="active"><a href="{% url accounts.views.settings %}">Gerenciar usuários</a></li>
               <li><a href="#">Servidor SMTP</a></li>
-              <li><a href="#">Usuários Skype</a></li>
+              <li><a href="#">Lista de contatos Skype</a></li>
+              {% endif %}
               <li class="nav-header">PABX IP</li>
               <li><a href="#">Configuração de rede</a></li>
               <li><a href="#">Operadoras</a></li>
@@ -83,6 +87,7 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
+        {% block content %}
           <div class="hero-unit">
             <h1>Hello, world!</h1>
 
@@ -128,6 +133,7 @@
 
             </div><!--/span-->
           </div><!--/row-->
+        {% endblock %}
         </div><!--/span-->
       </div><!--/row-->
 

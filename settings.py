@@ -153,6 +153,7 @@ INSTALLED_APPS = [
     # Pinax
     
     # project
+    'accounts',
 ]
 
 FIXTURE_DIRS = [
