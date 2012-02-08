@@ -16,11 +16,13 @@
 		{% for s in show %}
 		<tr>
 			{% for value in s %}
-			<td>{{ value }}</td>
+			<td>{% autoescape off %}{{ value }}{% endautoescape %}</td>
 			{% endfor %}
 		</tr>
 		{% endfor %}
 	</tbody>
 </table>
+
+<p align="center">{% autoescape off %}{{ add_button }}{% endautoescape %}</p>
 
 {% endblock %}

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>PABX IP | {{ title }}</title>
+    <title>PABX IP{% if title %} | {{ title }}{% else %}{% endif %}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -70,7 +70,7 @@
             <ul class="nav nav-list">
               {% if request.session.is_admin %}
               <li class="nav-header">Administração</li>
-              <li class="active"><a href="{% url accounts.views.settings %}">Gerenciar usuários</a></li>
+              <li {% if highlight == 'accounts' %} class="active" {% endif %}><a href="{% url accounts.views.settings %}">Gerenciar usuários</a></li>
               <li><a href="#">Servidor SMTP</a></li>
               <li><a href="#">Lista de contatos Skype</a></li>
               {% endif %}

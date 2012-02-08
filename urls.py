@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from django.conf import settings
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
@@ -14,12 +15,13 @@ handler500 = "pinax.views.server_error"
 urlpatterns = patterns("",
     url(r"^$", login_required(direct_to_template), {
         "template": "base.html",
-    }, name="home"),
+    }, name=u"Página Inicial"),
     url(r"^admin/", include(admin.site.urls)),
 
 	url(r'^accounts/login/$', 'accounts.views.login' ),
     url(r'^accounts/logout/$', 'accounts.views.logout'),
     url(r'^accounts/settings/$', 'accounts.views.settings'),
+    url(r'^accounts/create/$', 'accounts.views.create'),
 
 )
 
