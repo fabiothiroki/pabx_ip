@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form class="form-horizontal" action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+	<fieldset>
+		<legend>{{ title }}</legend>
+
+		{% for field in form %}
+			<div class="control-group {% if field.errors %}error{% endif %}">
+				{{ field.label_tag }}{%if field.field.required%} {%endif%}
+				<div class="controls">
+					{{ field }}
+					{% if field.help_text %}<p class="help-block">{{ field.help_text }}</p>{% endif %}
+					{% if field.errors %}<span class="help-inline">{{field.errors}}</span>{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+		<div class="form-actions">
+			<input type="submit" value="Salvar" class="btn btn-primary btn-large" />
+		</div>
+	</fieldset>
+</form>
+
+{% endblock %}
