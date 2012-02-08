@@ -22,6 +22,7 @@ urlpatterns = patterns("",
     url(r'^accounts/logout/$', 'accounts.views.logout'),
     url(r'^accounts/settings/$', 'accounts.views.settings'),
     url(r'^accounts/create/$', 'accounts.views.create'),
+    url(r'^accounts/edit/(\d+)/$','accounts.views.edit'),
 
 )
 

@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -151,5 +152,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{STATIC_URL}}/js/jquery.min.js"></script>
     <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
+    {% block js %}{% endblock %}
   </body>
 </html>

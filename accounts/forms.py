@@ -13,7 +13,7 @@ class UserForm(forms.Form):
 
   nome = forms.CharField(max_length=40,label="Nome",required=True)
   email = forms.EmailField(max_length=40,label="Email",required=True)
-  password = forms.CharField(widget=PasswordInput(render_value=True),max_length=100,label='Senha')
+  password = forms.CharField(widget=PasswordInput(render_value=False),max_length=100,label='Senha')
   ramal = forms.IntegerField(required=True,min_value=0)
   admin = forms.BooleanField(required=False,label="Administrador")
   can_call_ramal = forms.BooleanField(required=False,label="Permitir ligações para ramal",initial=True)
@@ -24,3 +24,19 @@ class UserForm(forms.Form):
   can_call_ddi = forms.BooleanField(required=False,label="Permitir ligações DDI")
   can_call_0800 = forms.BooleanField(required=False,label="Permitir ligações 0800")
   can_call_0300 = forms.BooleanField(required=False,label="Permitir ligações 0300")
+
+  def clean(self):
+    cleaned_data = self.cleaned_data
+    ramal = cleaned_data['ramal']
+    email = cleaned_data['email']
+
+    if ramal and UserProfile.objects.filter(ramal=ramal):
+      self._errors["ramal"] = self.error_class([u"Ramal já cadastrado."])
+      raise forms.ValidationError("not unique")
+
+    if email and User.objects.filter(email=email):
+      self._errors["email"] = self.error_class([u"Email já cadastrado."])
+      raise forms.ValidationError("not unique")
+
+    # Always return the full collection of cleaned data.
+    return cleaned_data

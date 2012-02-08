@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block js %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#cancel-button").click(function(){
+		window.location.href = "{{ cancel_link }}";
+	});
+})
+</script>
+{% endblock %}
+
+{% block content %}{% load i18n %}
 
 <form class="form-horizontal" action="." method="post" enctype="multipart/form-data">{% csrf_token %}
 	<fieldset>
@@ -12,12 +22,13 @@
 				<div class="controls">
 					{{ field }}
 					{% if field.help_text %}<p class="help-block">{{ field.help_text }}</p>{% endif %}
-					{% if field.errors %}<span class="help-inline">{{field.errors}}</span>{% endif %}
+					{% if field.errors %}<span class="help-inline">{% for error in field.errors %}{% if forloop.first %}{{ error }}{% endif %}{% endfor %}</span>{% endif %}
 				</div>
 			</div>
 		{% endfor %}
 		<div class="form-actions">
-			<input type="submit" value="Salvar" class="btn btn-primary btn-large" />
+			<input type="submit" value="Salvar" class="btn btn-primary" />
+			 <button class="btn" type="button" id="cancel-button">Cancelar</button>
 		</div>
 	</fieldset>
 </form>

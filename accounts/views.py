@@ -84,8 +84,6 @@ def settings(request):
                 action += ' <a class="btn btn-danger" href="#"><i class="icon-trash icon-white"></i>Remover</a>'
                 action += '</p>'
 
-                add_button = '<a class="btn btn-primary" href="/accounts/create"><i class="icon-plus icon-white"></i>Adicionar Usuário</a>'
-
                 userdict = [u.first_name,up.ramal,u.email,admin,action]
 
                 show.append(userdict)
@@ -93,27 +91,92 @@ def settings(request):
             print err
             pass
 
+    add_button = '<a class="btn btn-primary" href="/accounts/create"><i class="icon-plus icon-white"></i>Adicionar Usuário</a>'
+
     return render_to_response('crud.html',locals(),context_instance=RequestContext(request))
 
+@login_required
+@is_admin
 def create(request):
-    title = "Adicionar Usuário"
-    highlight = "accounts"
-
     if request.method == 'POST':
         form = UserForm(request.POST)
 
         if form.is_valid():
-            print 'asdasd'
 
-            nome = form.cleaned_data['nome']
+            save_or_update(form)
 
-            print nome
+            title = "Usuário adicionado com sucesso"
+            highlight = "accounts"
+            cancel_link = "/accounts/settings/"
+            cancel_name = "Gerenciar Usuários"
 
-            return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
+            return render_to_response("form_success.html",locals(),context_instance=RequestContext(request),)
         else:
-            print form.errors
+            title = "Adicionar Usuário"
+            highlight = "accounts"
+            cancel_link = "/accounts/settings/"
             return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
     else:
+        title = "Adicionar Usuário"
+        highlight = "accounts"
+        cancel_link = "/accounts/settings/"
         form = UserForm()
 
         return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
+
+@login_required
+@is_admin
+def edit(request,offset):
+
+    user = User.objects.get(pk=int(offset))
+    profile = UserProfile.objects.get(profile=int(offset))
+
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+
+        return render_to_response("form_success.html",locals(),context_instance=RequestContext(request),)
+    else:
+        form = UserForm()
+
+
+        
+        return render_to_response("form_success.html",locals(),context_instance=RequestContext(request),)
+
+def save_or_update(form,user=None,profile=None):
+
+    nome = form.cleaned_data['nome']
+    email = form.cleaned_data['email']
+    password = form.cleaned_data['password']
+    ramal = form.cleaned_data['ramal']
+    admin = form.cleaned_data['admin']
+    can_call_fix = form.cleaned_data['can_call_fix']
+    can_call_mobile = form.cleaned_data['can_call_mobile']
+    can_call_ddd = form.cleaned_data['can_call_ddd']
+    can_call_ddi = form.cleaned_data['can_call_ddi']
+    can_call_0800 = form.cleaned_data['can_call_0800']
+    can_call_0300 = form.cleaned_data['can_call_0300']
+
+    if (user == None):
+        user = User()
+    else:
+        pass
+    user.first_name = nome
+    user.username = email
+    user.email = email
+    user.set_password(password)
+    user.save()
+
+    if (profile == None):
+        profile = UserProfile()
+    else:
+        pass
+    profile.profile = user
+    profile.ramal = ramal
+    profile.admin = admin
+    profile.can_call_fix = can_call_fix
+    profile.can_call_mobile = can_call_mobile
+    profile.can_call_ddd = can_call_ddd
+    profile.can_call_ddi = can_call_ddi
+    profile.can_call_0800 = can_call_0800
+    profile.can_call_0300 = can_call_0300
+    profile.save()
