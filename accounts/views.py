@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 
 from pabx_ip.accounts.models import UserProfile
 from pabx_ip.accounts.decorators import is_admin
-from accounts.forms import *
+from accounts.forms import UserForm
 
 def login(request):
 
@@ -97,10 +97,23 @@ def settings(request):
 
 def create(request):
     title = "Adicionar Usuário"
+    highlight = "accounts"
 
     if request.method == 'POST':
-        pass
+        form = UserForm(request.POST)
+
+        if form.is_valid():
+            print 'asdasd'
+
+            nome = form.cleaned_data['nome']
+
+            print nome
+
+            return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
+        else:
+            print form.errors
+            return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
     else:
-        form = UserCompleteForm()
+        form = UserForm()
 
         return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
