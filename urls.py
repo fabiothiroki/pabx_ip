@@ -23,6 +23,8 @@ urlpatterns = patterns("",
     url(r'^accounts/settings/$', 'accounts.views.settings'),
     url(r'^accounts/create/$', 'accounts.views.create'),
     url(r'^accounts/edit/(\d+)/$','accounts.views.edit'),
+    url(r'^accounts/remove/(\d+)/$','accounts.views.delete'),
+    url(r'^accounts/editself/$','accounts.views.edit_self'),
 
 )
 

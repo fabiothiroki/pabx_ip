@@ -28,8 +28,12 @@ class UserForm(forms.Form):
 
   def clean(self):
     cleaned_data = self.cleaned_data
-    ramal = cleaned_data['ramal']
-    email = cleaned_data['email']
+    try:
+      ramal = cleaned_data['ramal']
+      email = cleaned_data['email']
+    except:
+      ramal = None
+      email = None
     
     #if cleaned_data.has_key( 'edit' ):
     edit = cleaned_data['edit']

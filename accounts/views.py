@@ -33,6 +33,7 @@ def login(request):
                     request.session["is_admin"] = False
 
             request.session['username'] = username
+            request.session['user_id'] = user.id
 
             title = u"Página Inicial"
             highlight = ''
@@ -54,7 +55,6 @@ def logout(request):
 @login_required
 @is_admin
 def settings(request):
-
     title = "Gerenciar Usuários"
     highlight = "accounts"
 
@@ -71,7 +71,10 @@ def settings(request):
                 up = UserProfile.objects.get(profile=u.id)
 
                 if up.admin == True:
-                    admin = 'Administrador'
+                    if request.session['username'] != 'root':
+                        continue
+                    else:
+                        admin = 'Administrador'
                 else:
                     admin = 'Usuário'
 
@@ -81,7 +84,7 @@ def settings(request):
 
                 action = '<p align="center">'
                 action += "<a class='btn' href='/accounts/edit/"+str(u.id)+"'><i class='icon-pencil'></i>Editar</a>"
-                action += ' <a class="btn btn-danger" href="#"><i class="icon-trash icon-white"></i>Remover</a>'
+                action += ' <a class="btn btn-danger" href="/accounts/remove/'+str(u.id)+'"><i class="icon-trash icon-white"></i>Remover</a>'
                 action += '</p>'
 
                 userdict = [u.first_name,up.ramal,u.email,admin,action]
@@ -129,7 +132,6 @@ def create(request):
 def edit(request,offset):
     if request.method == 'POST':
         form = UserForm(request.POST)
-
         if form.is_valid():
 
             user = User.objects.get(pk=int(offset))
@@ -154,9 +156,13 @@ def edit(request,offset):
         try:
             user = User.objects.get(pk=int(offset))
             profile = UserProfile.objects.get(profile=int(offset))
-
         except:
             raise PermissionDenied
+
+        if (request.session['username'] != 'root'):
+            if (profile.admin == True):
+                if request.session['user_id'] != int(offset):
+                    raise PermissionDenied
 
         form = UserForm(initial={
             'nome':user.first_name,
@@ -179,6 +185,57 @@ def edit(request,offset):
 @login_required
 @is_admin
 def delete(request,offset):
+    if request.method == 'POST':
+
+        user = User.objects.get(pk=int(offset))
+        profile = UserProfile.objects.get(profile=int(offset))
+
+        user.delete()
+        profile.delete()
+
+        title=u"Usuário Removido com sucesso"
+        highlight = "accounts"
+        cancel_link = "/accounts/settings/"
+        cancel_name = u"Gerenciar Usuários"
+
+        return render_to_response("form_success.html",locals(),context_instance=RequestContext(request),)
+
+    else:
+        try:
+            user = User.objects.get(pk=int(offset))
+            profile = UserProfile.objects.get(profile=int(offset))
+        except:
+            raise PermissionDenied
+
+        if request.session['username'] != 'root':
+            if profile.admin == True:
+                raise PermissionDenied
+
+        title = u"Remover Usuário"
+        highlight = "accounts"
+        cancel_link = "/accounts/settings/"
+        what = "o usuário "+str(user.email)
+
+        return render_to_response("form_delete.html",locals(),context_instance=RequestContext(request),)
+
+@login_required
+def edit_self(request):
+    if request.method == 'POST':
+
+
+        return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
+    else:
+        
+        if request.session['is_admin']:
+            if request.session['username'] != 'root':
+                return HttpResponseRedirect("/accounts/edit/"+str(request.session['user_id']))
+            else:
+                # only user form
+                return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
+        else:
+            #only user form
+
+            return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
 
 
 def save_or_update(form,user=None,profile=None):
