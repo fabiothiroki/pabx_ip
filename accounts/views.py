@@ -8,13 +8,13 @@ from django.contrib.auth import authenticate,login
 from django.template.context import Context,RequestContext
 from django.contrib.auth.views import logout_then_login
 from django.contrib.auth.decorators import login_required,user_passes_test
+from django.core.exceptions import PermissionDenied
 
 from pabx_ip.accounts.models import UserProfile
 from pabx_ip.accounts.decorators import is_admin
 from accounts.forms import UserForm
 
 def login(request):
-
     if request.POST:
         username = request.POST['username']
         password = request.POST['password']
@@ -80,7 +80,7 @@ def settings(request):
                     continue
 
                 action = '<p align="center">'
-                action += '<a class="btn" href="#"><i class="icon-pencil"></i>Editar</a>'
+                action += "<a class='btn' href='/accounts/edit/"+str(u.id)+"'><i class='icon-pencil'></i>Editar</a>"
                 action += ' <a class="btn btn-danger" href="#"><i class="icon-trash icon-white"></i>Remover</a>'
                 action += '</p>'
 
@@ -120,27 +120,66 @@ def create(request):
         title = "Adicionar Usuário"
         highlight = "accounts"
         cancel_link = "/accounts/settings/"
-        form = UserForm()
+        form = UserForm(initial={'edit':0})
 
         return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
 
 @login_required
 @is_admin
 def edit(request,offset):
-
-    user = User.objects.get(pk=int(offset))
-    profile = UserProfile.objects.get(profile=int(offset))
-
     if request.method == 'POST':
         form = UserForm(request.POST)
 
-        return render_to_response("form_success.html",locals(),context_instance=RequestContext(request),)
-    else:
-        form = UserForm()
+        if form.is_valid():
 
+            user = User.objects.get(pk=int(offset))
+            profile = UserProfile.objects.get(profile=int(offset))
+
+            save_or_update(form,user,profile)
+
+            title="Usuário Editado com sucesso"
+            highlight = "accounts"
+            cancel_link = "/accounts/settings/"
+            cancel_name = "Gerenciar Usuários"
+
+            return render_to_response("form_success.html",locals(),context_instance=RequestContext(request),)
+        else:
+
+            return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
+    else:
+        title = "Editar Usuário"
+        highlight = "accounts"
+        cancel_link = "/accounts/settings/"
+
+        try:
+            user = User.objects.get(pk=int(offset))
+            profile = UserProfile.objects.get(profile=int(offset))
+
+        except:
+            raise PermissionDenied
+
+        form = UserForm(initial={
+            'nome':user.first_name,
+            'email':user.email,
+            'password':user.password,
+            'ramal':profile.ramal,
+            'admin':profile.admin,
+            'can_call_fix':profile.can_call_fix,
+            'can_call_mobile':profile.can_call_mobile,
+            'can_call_ddd':profile.can_call_ddd,
+            'can_call_ddi':profile.can_call_ddi,
+            'can_call_0800':profile.can_call_0800,
+            'can_call_0300':profile.can_call_0300,
+            'edit':int(offset),
+        })
 
         
-        return render_to_response("form_success.html",locals(),context_instance=RequestContext(request),)
+        return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
+
+@login_required
+@is_admin
+def delete(request,offset):
+
 
 def save_or_update(form,user=None,profile=None):
 
