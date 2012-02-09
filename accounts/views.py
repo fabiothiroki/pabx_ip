@@ -12,7 +12,7 @@ from django.core.exceptions import PermissionDenied
 
 from pabx_ip.accounts.models import UserProfile
 from pabx_ip.accounts.decorators import is_admin
-from accounts.forms import UserForm
+from accounts.forms import UserForm,OnlyUserForm
 
 def login(request):
     if request.POST:
@@ -221,20 +221,58 @@ def delete(request,offset):
 @login_required
 def edit_self(request):
     if request.method == 'POST':
+        form = OnlyUserForm(request.POST)
+        if form.is_valid():
+            user = User.objects.get(pk=int(request.session['user_id']))
 
+            nome = form.cleaned_data['nome']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
 
-        return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
+            user.first_name = nome
+            if user.username != 'root':
+                user.username = email
+            user.email = email
+
+            if user.password != password:
+                user.set_password(password)
+            user.save()
+
+            title="Usuário Editado com sucesso"
+            cancel_link = "/"
+
+        return render_to_response("form_success.html",locals(),context_instance=RequestContext(request),)
     else:
         
         if request.session['is_admin']:
             if request.session['username'] != 'root':
                 return HttpResponseRedirect("/accounts/edit/"+str(request.session['user_id']))
             else:
+                user = User.objects.get(pk=int(request.session['user_id']))
+
                 # only user form
+                form = OnlyUserForm(initial={
+                    'nome':user.first_name,
+                    'email':user.email,
+                    'password':user.password,
+                    'edit':user.id
+                })
+
+                title="Editar Usuário"
+                cancel_link = "/"
+
                 return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
         else:
-            #only user form
+            # only user form
+            form = OnlyUserForm(initial={
+                'nome':user.first_name,
+                'email':user.email,
+                'password':user.password,
+                'edit':user.id
+            })
 
+            title="Usuário Editado com sucesso"
+            cancel_link = "/"
             return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
 
 
@@ -259,7 +297,9 @@ def save_or_update(form,user=None,profile=None):
     user.first_name = nome
     user.username = email
     user.email = email
-    user.set_password(password)
+
+    if user.password != password:
+        user.set_password(password)
     user.save()
 
     if (profile == None):

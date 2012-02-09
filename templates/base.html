@@ -55,7 +55,7 @@
             </ul>
             -->
             <p class="navbar-text pull-right">
-              <a href="#"><i class="icon-user icon-white"></i> {{ request.session.username }}</a>
+              <a href="{% url accounts.views.edit_self %}"><i class="icon-user icon-white"></i> {{ request.session.username }}</a>
               <a href="{% url accounts.views.logout %}">Sair</a>
             </p>
           </div><!--/.nav-collapse -->

@@ -54,6 +54,33 @@ class UserForm(forms.Form):
         self._errors["email"] = self.error_class([u"Email já cadastrado."])
         raise forms.ValidationError("not unique")
     
-    print cleaned_data
     # Always return the full collection of cleaned data.
+    return cleaned_data
+
+class OnlyUserForm(forms.Form):
+  def __init__(self, *args, **kwargs):
+    super(OnlyUserForm, self).__init__(*args, **kwargs)
+
+  nome = forms.CharField(max_length=40,label="Nome",required=True)
+  email = forms.EmailField(max_length=40,label="Email",required=True)
+  password = forms.CharField(widget=PasswordInput(render_value=True),max_length=100,label='Senha')
+  edit = forms.IntegerField(widget = HiddenInput())
+
+  def clean(self):
+    cleaned_data = self.cleaned_data
+
+    try:
+      email = cleaned_data['email']
+    except:
+      email = None
+
+    edit = cleaned_data['edit']
+
+    ue = User.objects.filter(email=email)
+
+    if ue[0].id != edit:
+      self._errors["email"] = self.error_class([u"Email já cadastrado."])
+      raise forms.ValidationError("not unique")
+
+
     return cleaned_data

@@ -5,7 +5,7 @@
 <form class="form-horizontal" action="." method="post" enctype="multipart/form-data">{% csrf_token %}
 	<fieldset>
 		<legend>{{ title }}</legend>
-		<p><a href="{{cancel_link}}">Voltar para "{{ cancel_name }}"</a></p>
+		<p><a href="{{cancel_link}}">Voltar {% if cancel_name %} para "{{ cancel_name }}"{% endif %}</a></p>
 	</fieldset>
 </form>
 
