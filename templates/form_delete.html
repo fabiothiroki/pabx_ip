@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block js %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#cancel-button").click(function(){
+		window.location.href = "{{ cancel_link }}";
+	});
+})
+</script>
+{% endblock %}
+
+{% block content %}{% load i18n %}
+
+<form class="form-horizontal" action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+	<fieldset>
+		<legend>{{ title }}</legend>
+		<p>Deseja mesmo remover {{what}}?</p>
+		<div class="form-actions">
+			<input type="submit" value="Confirmar" class="btn btn-success" />
+			 <button class="btn" type="button" id="cancel-button">Cancelar</button>
+		</div>
+	</fieldset>
+</form>
+
+{% endblock %}
