@@ -34,6 +34,7 @@ def login(request):
 
             request.session['username'] = username
             request.session['user_id'] = user.id
+            request.session['name'] = user.first_name
 
             title = u"Página Inicial"
             highlight = ''
