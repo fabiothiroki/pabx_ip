@@ -26,6 +26,7 @@ urlpatterns = patterns("",
     url(r'^accounts/remove/(\d+)/$','accounts.views.delete'),
     url(r'^accounts/editself/$','accounts.views.edit_self'),
 
+    url(r'^smtp/index/$', 'smtp.views.index'),
 )
 
 

@@ -3,6 +3,7 @@
 
 import os.path
 import posixpath
+import smtplib
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
@@ -109,7 +110,7 @@ MIDDLEWARE_CLASSES = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    #"debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.locale.LocaleMiddleware',
 ]
 
@@ -157,6 +158,7 @@ INSTALLED_APPS = [
     
     # project
     'accounts',
+    'smtp',
 ]
 
 FIXTURE_DIRS = [
@@ -165,7 +167,12 @@ FIXTURE_DIRS = [
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
-EMAIL_BACKEND = "mailer.backend.DbBackend"
+#EMAIL_BACKEND = "mailer.backend.DbBackend"
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT= 587
+EMAIL_HOST_USER='iinfotrack@gmail.com '
+EMAIL_HOST_PASSWORD='infotrack123'
+EMAIL_USE_TLS=True
 
 DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS": False,

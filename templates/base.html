@@ -72,7 +72,7 @@
               {% if request.session.is_admin %}
               <li class="nav-header">Administração</li>
               <li {% if highlight == 'accounts' %} class="active" {% endif %}><a href="{% url accounts.views.settings %}">Gerenciar usuários</a></li>
-              <li><a href="#">Servidor SMTP</a></li>
+              <li {% if highlight == 'smtp' %} class="active" {% endif %}><a href="{% url smtp.views.index %}">Servidor SMTP</a></li>
               <li><a href="#">Lista de contatos Skype</a></li>
               {% endif %}
               <li class="nav-header">PABX IP</li>
