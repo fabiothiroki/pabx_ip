@@ -27,6 +27,7 @@ urlpatterns = patterns("",
     url(r'^accounts/editself/$','accounts.views.edit_self'),
 
     url(r'^smtp/index/$', 'smtp.views.index'),
+    url(r'^smtp/configure/$', 'smtp.views.configure'),
 )
 
 

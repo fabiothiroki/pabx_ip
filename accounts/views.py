@@ -168,6 +168,7 @@ def edit(request,offset):
             'nome':user.first_name,
             'email':user.email,
             'password':user.password,
+            'password2':user.password2,
             'ramal':profile.ramal,
             'admin':profile.admin,
             'can_call_fix':profile.can_call_fix,
@@ -255,6 +256,7 @@ def edit_self(request):
                     'nome':user.first_name,
                     'email':user.email,
                     'password':user.password,
+                    'password2':user.password2,
                     'edit':user.id
                 })
 
@@ -268,6 +270,7 @@ def edit_self(request):
                 'nome':user.first_name,
                 'email':user.email,
                 'password':user.password,
+                'password2':user.password2,
                 'edit':user.id
             })
 

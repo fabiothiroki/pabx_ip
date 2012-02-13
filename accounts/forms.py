@@ -13,7 +13,8 @@ class UserForm(forms.Form):
 
   nome = forms.CharField(max_length=40,label="Nome",required=True)
   email = forms.EmailField(max_length=40,label="Email",required=True)
-  password = forms.CharField(widget=PasswordInput(render_value=True),max_length=100,label='Senha')
+  password = forms.CharField(widget=PasswordInput(render_value=True),max_length=100,label='Senha',required=True)
+  password2 = forms.CharField(widget=PasswordInput(render_value=True),max_length=100,label='Confirmação de Senha',required=True)
   ramal = forms.IntegerField(required=True,min_value=0)
   admin = forms.BooleanField(required=False,label="Administrador")
   can_call_ramal = forms.BooleanField(required=False,label="Permitir ligações para ramal",initial=True)
@@ -28,17 +29,19 @@ class UserForm(forms.Form):
 
   def clean(self):
     cleaned_data = self.cleaned_data
-    try:
-      ramal = cleaned_data['ramal']
-      email = cleaned_data['email']
-    except:
-      ramal = None
-      email = None
+    ramal = cleaned_data.get('ramal')
+    email = cleaned_data.get('email')
+    password = cleaned_data.get("password")
+    confirm_password = cleaned_data.get("password2")
     
     #if cleaned_data.has_key( 'edit' ):
     edit = cleaned_data['edit']
     #else:
     #  edit = 0
+
+    if password != confirm_password:
+      self._errors["password"] = self.error_class([u"As senhas digitadas são diferentes."])
+      self._errors["password2"] = self.error_class([u"As senhas digitadas são diferentes."])
 
     up = UserProfile.objects.filter(ramal=ramal)
 
@@ -64,10 +67,17 @@ class OnlyUserForm(forms.Form):
   nome = forms.CharField(max_length=40,label="Nome",required=True)
   email = forms.EmailField(max_length=40,label="Email",required=True)
   password = forms.CharField(widget=PasswordInput(render_value=True),max_length=100,label='Senha')
+  confirm_password = forms.CharField(widget=PasswordInput(render_value=True),max_length=100,label='Confirmar Senha')
   edit = forms.IntegerField(widget = HiddenInput())
 
   def clean(self):
     cleaned_data = self.cleaned_data
+    password = cleaned_data.get("password")
+    confirm_password = cleaned_data.get("password2")
+
+    if password != confirm_password:
+      self._errors["password"] = self.error_class([u"As senhas digitadas são diferentes."])
+      self._errors["password2"] = self.error_class([u"As senhas digitadas são diferentes."])
 
     try:
       email = cleaned_data['email']
