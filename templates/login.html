@@ -41,6 +41,7 @@
     <div class="container" >
       <div>
         <h1>PABX IP</h1>
+        {% block container %}
         <p>Faça o login para continuar.</p>
         <form class="login uniForm" method="POST" action=".">{% csrf_token %}
         <fieldset class="inlineLabels">
@@ -68,7 +69,7 @@
         
 
         <div class="form_block" style="padding-bottom:8px;">
-            <a href="/account/password_reset/">Esqueci minha senha</a>
+            <a href="/accounts/password_reset/">Esqueci minha senha</a>
         </div>
             
         <input type="hidden" name="next" value="/">
@@ -79,6 +80,7 @@
         </fieldset>
         </form>
       </div>
+      {% endblock %}
     </div> <!-- /container -->
 
     <!-- Le javascript

@@ -94,3 +94,21 @@ class OnlyUserForm(forms.Form):
 
 
     return cleaned_data
+
+class PassResetForm(forms.Form):
+  def __init__(self, *args, **kwargs):
+    super(PassResetForm, self).__init__(*args, **kwargs)
+
+  email = forms.EmailField(max_length=40,label="Email",required=True)
+
+  def clean(self):
+    cleaned_data = self.cleaned_data
+
+    email = cleaned_data.get('email')
+
+    try: 
+      User.objects.get(email=email)
+    except:
+      self._errors["email"] = self.error_class([u"Email não cadastrado."])
+
+    return cleaned_data

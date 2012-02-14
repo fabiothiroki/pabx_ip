@@ -1,4 +1,9 @@
 # -*- coding:utf-8 -*-
+import smtplib
+import bz2
+import base64
+from email.mime.text import MIMEText
+
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.shortcuts import render_to_response
@@ -9,10 +14,12 @@ from django.template.context import Context,RequestContext
 from django.contrib.auth.views import logout_then_login
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.core.exceptions import PermissionDenied
+from django.conf import settings
 
 from pabx_ip.accounts.models import UserProfile
 from pabx_ip.accounts.decorators import is_admin
-from accounts.forms import UserForm,OnlyUserForm
+from accounts.forms import *
+from smtp.models import server
 
 def login(request):
     if request.POST:
@@ -169,7 +176,7 @@ def edit(request,offset):
             'nome':user.first_name,
             'email':user.email,
             'password':user.password,
-            'password2':user.password2,
+            'password2':user.password,
             'ramal':profile.ramal,
             'admin':profile.admin,
             'can_call_fix':profile.can_call_fix,
@@ -279,7 +286,6 @@ def edit_self(request):
             cancel_link = "/"
             return render_to_response("form_create.html",locals(),context_instance=RequestContext(request),)
 
-
 def save_or_update(form,user=None,profile=None):
 
     nome = form.cleaned_data['nome']
@@ -304,19 +310,79 @@ def save_or_update(form,user=None,profile=None):
 
     if user.password != password:
         user.set_password(password)
+    
     user.save()
 
-    if (profile == None):
-        profile = UserProfile()
+    try:
+        if (profile == None):
+            profile = UserProfile()
+        else:
+            pass
+        profile.profile = user
+        profile.ramal = ramal
+        profile.admin = admin
+        profile.can_call_fix = can_call_fix
+        profile.can_call_mobile = can_call_mobile
+        profile.can_call_ddd = can_call_ddd
+        profile.can_call_ddi = can_call_ddi
+        profile.can_call_0800 = can_call_0800
+        profile.can_call_0300 = can_call_0300
+
+        if user.password != password:
+            profile.passw = encrypt(password)
+
+        profile.save()
+    except Exception as err:
+        user.delete()
+        print err
+
+def password_reset(request):
+
+    if request.method == 'POST':
+        form = PassResetForm(request.POST)
+
+        if form.is_valid():
+
+            email = form.cleaned_data['email']
+
+            if server.objects.all().exists() == True:
+
+                s = server.objects.all()[0]
+
+                u = User.objects.get(email=email)
+                up = UserProfile.objects.get(profile=u)
+                p = unencrypt(up.passw)
+
+                msg = MIMEText('Sua senha:'+str(p))
+                msg['Subject'] = 'Recuperação da senha'
+                msg['From'] = s.username
+                msg['To'] = email
+
+                serve = smtplib.SMTP(s.url+':'+str(s.port))
+                serve.starttls()  
+                serve.login(s.username,s.password)  
+                serve.sendmail(s.username, [email], msg.as_string())  
+                serve.quit() 
+
+                le_message = "A senha foi enviada para o email indicado."
+
+            else:
+                le_message = "A senha não pôde ser enviada para o email indicado. Entre em contato com o administrador do sistema para recuperar sua senha."
+
+
+            return render_to_response("accounts/templates/password_reset_success.html",locals(),context_instance=RequestContext(request),)
+        else:
+            return render_to_response("accounts/templates/password_reset_form.html",locals(),context_instance=RequestContext(request),)
+
     else:
-        pass
-    profile.profile = user
-    profile.ramal = ramal
-    profile.admin = admin
-    profile.can_call_fix = can_call_fix
-    profile.can_call_mobile = can_call_mobile
-    profile.can_call_ddd = can_call_ddd
-    profile.can_call_ddi = can_call_ddi
-    profile.can_call_0800 = can_call_0800
-    profile.can_call_0300 = can_call_0300
-    profile.save()
+        form = PassResetForm()
+
+        return render_to_response("accounts/templates/password_reset_form.html",locals(),context_instance=RequestContext(request),)
+
+def encrypt(plaintext):
+    encrypted_password = base64.b64encode(plaintext)
+
+    return encrypted_password
+
+def unencrypt(encrypted_password):
+    return base64.b64decode(str(encrypted_password)) 

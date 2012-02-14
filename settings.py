@@ -118,6 +118,7 @@ ROOT_URLCONF = "pabx_ip.urls"
 
 TEMPLATE_DIRS = [
     os.path.join(PROJECT_ROOT, "templates"),
+    PROJECT_ROOT,
 ]
 
 TEMPLATE_CONTEXT_PROCESSORS = [

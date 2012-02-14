@@ -5,7 +5,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.template.context import Context,RequestContext
 
-from pabx_ip.accounts.decorators import is_admin
+from accounts.decorators import is_admin
 from smtp.models import server
 from smtp.forms import smtpform
 

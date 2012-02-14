@@ -17,3 +17,4 @@ class UserProfile(models.Model):
     can_call_ddi = models.BooleanField(blank=False,default=False)
     can_call_0800 = models.BooleanField(blank=False,default=False)
     can_call_0300 = models.BooleanField(blank=False,default=False)
+    passw = models.CharField(max_length=30,default='')
