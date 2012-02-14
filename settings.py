@@ -160,6 +160,7 @@ INSTALLED_APPS = [
     # project
     'accounts',
     'smtp',
+    'skypelist',
 ]
 
 FIXTURE_DIRS = [
