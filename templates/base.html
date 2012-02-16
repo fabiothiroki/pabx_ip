@@ -73,7 +73,7 @@
               <li class="nav-header">Administração</li>
               <li {% if highlight == 'accounts' %} class="active" {% endif %}><a href="{% url accounts.views.settings %}">Gerenciar usuários</a></li>
               <li {% if highlight == 'smtp' %} class="active" {% endif %}><a href="{% url smtp.views.index %}">Servidor SMTP</a></li>
-              <li><a href="#">Lista de contatos Skype</a></li>
+              <li {% if highlight == 'skypelist' %} class="active" {% endif %}><a href="{% url skypelist.views.index %}">Lista de contatos Skype</a></li>
               {% endif %}
               <li class="nav-header">PABX IP</li>
               <li><a href="#">Configuração de rede</a></li>

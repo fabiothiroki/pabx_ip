@@ -29,6 +29,8 @@ urlpatterns = patterns("",
 
     url(r'^smtp/index/$', 'smtp.views.index'),
     url(r'^smtp/configure/$', 'smtp.views.configure'),
+
+    url(r'^skypelist/index/$', 'skypelist.views.index'),
 )
 
 
