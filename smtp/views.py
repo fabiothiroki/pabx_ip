@@ -62,6 +62,7 @@ def configure(request):
         else:
             highlight = 'smtp'
             title = 'Configurar servidor SMTP'
+
             return render_to_response('form_create.html',locals(),context_instance=RequestContext(request))
     else:
 
@@ -83,5 +84,6 @@ def configure(request):
 
         highlight = 'smtp'
         title = 'Configurar servidor SMTP'
+        cancel_link = '/smtp/index'
 
         return render_to_response('form_create.html',locals(),context_instance=RequestContext(request))
