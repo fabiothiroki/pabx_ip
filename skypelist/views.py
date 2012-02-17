@@ -74,9 +74,8 @@ def edit(request,offset):
     except:
         raise PermissionDenied
 
-
     if request.method == 'POST':
-        form = skypeform(request.POST,instance=su)
+        form = skypeform(request.POST,instance=su,initial={'edit':su.id})
 
         if form.is_valid():
             highlight = 'skypelist'
@@ -97,7 +96,7 @@ def edit(request,offset):
     else:
 
         
-        form = skypeform(instance = su)
+        form = skypeform(instance = su,initial={'edit':su.id})
 
         highlight = 'skypelist'
         title = 'Editar contato Skype'
