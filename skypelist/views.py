@@ -68,7 +68,6 @@ def create(request):
 @login_required
 @is_admin
 def edit(request,offset):
-
     try:
         su = skypeuser.objects.get(pk=offset)
     except:
@@ -94,8 +93,6 @@ def edit(request,offset):
             return render_to_response('form_create.html',locals(),context_instance=RequestContext(request))
 
     else:
-
-        
         form = skypeform(instance = su,initial={'edit':su.id})
 
         highlight = 'skypelist'
@@ -103,3 +100,31 @@ def edit(request,offset):
         cancel_link = '/skypelist/index'
 
         return render_to_response('form_create.html',locals(),context_instance=RequestContext(request))
+
+@login_required
+@is_admin
+def delete(request,offset):
+    if request.method == 'POST':
+
+        user = skypeuser.objects.get(pk=int(offset))
+        user.delete()
+
+        title=u"Usuário Skype Removido com sucesso"
+        highlight = "skypelist"
+        cancel_link = "/skypelist/index/"
+        cancel_name = u"Lista de contatos Skype"
+
+        return render_to_response("form_success.html",locals(),context_instance=RequestContext(request),)
+
+    else:
+        try:
+            user = skypeuser.objects.get(pk=int(offset))
+        except:
+            raise PermissionDenied
+
+        title = u"Remover Usuário Skype"
+        highlight = "skypelist"
+        cancel_link = "/skypelist/index/"
+        what = "o usuário "+str(user.username)
+
+        return render_to_response("form_delete.html",locals(),context_instance=RequestContext(request),)
