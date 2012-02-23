@@ -179,12 +179,6 @@ def edit(request,offset):
             'password2':user.password,
             'ramal':profile.ramal,
             'admin':profile.admin,
-            'can_call_fix':profile.can_call_fix,
-            'can_call_mobile':profile.can_call_mobile,
-            'can_call_ddd':profile.can_call_ddd,
-            'can_call_ddi':profile.can_call_ddi,
-            'can_call_0800':profile.can_call_0800,
-            'can_call_0300':profile.can_call_0300,
             'edit':int(offset),
         })
 
@@ -293,12 +287,6 @@ def save_or_update(form,user=None,profile=None):
     password = form.cleaned_data['password']
     ramal = form.cleaned_data['ramal']
     admin = form.cleaned_data['admin']
-    can_call_fix = form.cleaned_data['can_call_fix']
-    can_call_mobile = form.cleaned_data['can_call_mobile']
-    can_call_ddd = form.cleaned_data['can_call_ddd']
-    can_call_ddi = form.cleaned_data['can_call_ddi']
-    can_call_0800 = form.cleaned_data['can_call_0800']
-    can_call_0300 = form.cleaned_data['can_call_0300']
 
     if (user == None):
         user = User()
@@ -321,12 +309,7 @@ def save_or_update(form,user=None,profile=None):
         profile.profile = user
         profile.ramal = ramal
         profile.admin = admin
-        profile.can_call_fix = can_call_fix
-        profile.can_call_mobile = can_call_mobile
-        profile.can_call_ddd = can_call_ddd
-        profile.can_call_ddi = can_call_ddi
-        profile.can_call_0800 = can_call_0800
-        profile.can_call_0300 = can_call_0300
+
 
         if user.password != password:
             profile.passw = encrypt(password)
