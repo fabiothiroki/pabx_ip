@@ -72,7 +72,7 @@
               {% if request.session.is_admin %}
               <li class="nav-header">Administração</li>
               <li {% if highlight == 'accounts' %} class="active" {% endif %}><a href="{% url accounts.views.settings %}"> Usuários</a></li>
-              <li {% if highlight == 'groups' %} class="active" {% endif %}><a href="#">Grupos</a></li>
+              <li {% if highlight == 'groups' %} class="active" {% endif %}><a href="{% url groups.views.index %}">Grupos</a></li>
               <li {% if highlight == 'smtp' %} class="active" {% endif %}><a href="{% url smtp.views.index %}">Servidor SMTP</a></li>
               <li {% if highlight == 'skypelist' %} class="active" {% endif %}><a href="{% url skypelist.views.index %}">Lista de contatos Skype</a></li>
               {% endif %}

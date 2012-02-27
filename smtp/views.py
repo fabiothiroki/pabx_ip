@@ -18,9 +18,7 @@ def index(request):
     columns = ["Endereço","Porta","Usuário"]
     show = []
 
-    count = server.objects.all().count()
-
-    if count != 0:
+    if server.objects.all().exists() == True:
         s = server.objects.all()[0]
         url = s.url
         port = s.port

@@ -161,6 +161,7 @@ INSTALLED_APPS = [
     'accounts',
     'smtp',
     'skypelist',
+    'groups',
 ]
 
 FIXTURE_DIRS = [
