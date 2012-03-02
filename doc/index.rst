@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Bem vindo à documentação do projeto PABX-IP
-===================================
+===========================================
 
 Introdução
 ----------
@@ -14,12 +14,8 @@ Esta documentação tem o objetivo de servir de base para auxiliar o entendiment
 Recomendações
 -------------
 
-Antes de começar, é importante que o leitor tenha um conhecimento geral de programação orientada a objetos, banco de dados e desenvolvimento web. Para entendimento completo dessa documentação é necessário um conheciment prévio em Python, Javascript, jQuery e o framework Django.
+Antes de começar, é importante que o leitor tenha um conhecimento geral de programação orientada a objetos, banco de dados e desenvolvimento web. Para entendimento completo dessa documentação é necessário um conheciment prévio em Python, Javascript (jQuery) e o framework Django.
 
-Outras fontes de documentação
------------------------------
-
-Cada biblioteca utilizada pode possuir também uma documentação própria, que pode elucidar dúvidas mais específicas. Neste caso, o link para a sua documentação online encontra-se junto à sua seção na página 'bibliotecas utilizadas'.
 
 Conteúdo
 --------
@@ -28,6 +24,9 @@ Conteúdo
    :maxdepth: 2
 
    inicio
+   bibliotecas
+   codigo
+   futuro
 
 
 Indices and tables
