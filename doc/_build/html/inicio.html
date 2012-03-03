@@ -27,7 +27,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="top" title="PABX IP 0.1 documentation" href="index.html" />
-    <link rel="next" title="Bibliotecas externas" href="bibliotecas.html" />
+    <link rel="next" title="Visão geral do código" href="codigo.html" />
     <link rel="prev" title="Bem vindo à documentação do projeto PABX-IP" href="index.html" /> 
   </head>
   <body>
@@ -38,7 +38,7 @@
           <a href="genindex.html" title="Índice Geral"
              accesskey="I">índice</a></li>
         <li class="right" >
-          <a href="bibliotecas.html" title="Bibliotecas externas"
+          <a href="codigo.html" title="Visão geral do código"
              accesskey="N">próximo</a> |</li>
         <li class="right" >
           <a href="index.html" title="Bem vindo à documentação do projeto PABX-IP"
@@ -71,14 +71,14 @@
 <h2>3. Instalação do ambiente de desenvolvimento<a class="headerlink" href="#instalacao-do-ambiente-de-desenvolvimento" title="Link permanente para este título">¶</a></h2>
 <p>Esse tutorial foi feito no Ubuntu 11.10, usando o repositório git onde o código estava sendo versionado na época em que essa documentação foi feita. Caso o desenvolvedor já possua o código fonte, pule a parte 1.</p>
 <div class="section" id="instalacao-do-git-e-clone-do-repositorio">
-<h3>1. Instalação do git e clone do repositório:<a class="headerlink" href="#instalacao-do-git-e-clone-do-repositorio" title="Link permanente para este título">¶</a></h3>
+<h3>3.1. Instalação do git e clone do repositório:<a class="headerlink" href="#instalacao-do-git-e-clone-do-repositorio" title="Link permanente para este título">¶</a></h3>
 <div class="highlight-python"><pre>$ sudo apt-get install git
 
 $ git clone https://github.com/fabiothiroki/pabx_ip.git</pre>
 </div>
 </div>
 <div class="section" id="instalacao-e-ativacao-do-virtualenv">
-<h3>2. Instalação e ativação do virtualenv:<a class="headerlink" href="#instalacao-e-ativacao-do-virtualenv" title="Link permanente para este título">¶</a></h3>
+<h3>3.2. Instalação e ativação do virtualenv:<a class="headerlink" href="#instalacao-e-ativacao-do-virtualenv" title="Link permanente para este título">¶</a></h3>
 <p>O virtualenv é uma ferramenta de criação de ambientes python isolados. Isso visa facilitar o deploy da aplicação.</p>
 <p>Toda vez que o desenvolvedor quiser rodar o servidor local de desenvolvimento do django é necessário ativar esse ambiente, pois é nele que estarão instalados o Pinax e as bibliotecas python auxiliares.</p>
 <div class="highlight-python"><pre>$ sudo apt-get install python-pip
@@ -90,10 +90,45 @@ $ virtualenv pabx-env
 $ source pabx-env/bin/activate</pre>
 </div>
 </div>
-<div class="section" id="instalacao-do-pinax">
-<h3>2. Instalação do Pinax:<a class="headerlink" href="#instalacao-do-pinax" title="Link permanente para este título">¶</a></h3>
-<div class="highlight-python"><pre>(pabx-env)$ sudo pip install Pinax</pre>
+<div class="section" id="instalacao-do-pinax-e-outros-apps">
+<h3>3.3. Instalação do Pinax e outros apps:<a class="headerlink" href="#instalacao-do-pinax-e-outros-apps" title="Link permanente para este título">¶</a></h3>
+<p>Pinax é uma plataforma baseada no Django que contém diversos apps pré-instalados.</p>
+<p>Para mais informações consulte: <a class="reference external" href="http://pinaxproject.com/">http://pinaxproject.com/</a></p>
+<div class="highlight-python"><pre>(pabx-env)$ sudo pip install Pinax django_compressor
+(pabx-env)$ sudo pip install django_debug_toolbar
+(pabx-env)$ sudo pip install django_compressor
+(pabx-env)$ sudo pip install django_staticfiles
+(pabx-env)$ sudo pip install pinax_theme_bootstrap</pre>
 </div>
+</div>
+<div class="section" id="instalacao-do-django">
+<h3>3.4. Instalação do Django:<a class="headerlink" href="#instalacao-do-django" title="Link permanente para este título">¶</a></h3>
+<p>Django é o framework web utilizado no projeto.</p>
+<p>Para mais informações consulte: <a class="reference external" href="http://djangoproject.com/">http://djangoproject.com/</a></p>
+<div class="highlight-python"><pre>(pabx-env)$ sudo pip install Django</pre>
+</div>
+</div>
+<div class="section" id="instalacao-do-django-south">
+<h3>3.5. Instalação do Django South:<a class="headerlink" href="#instalacao-do-django-south" title="Link permanente para este título">¶</a></h3>
+<p>O South é utilizado para implementar o controle da estrutura e migração do banco de dados. Seus arquivos estão na pasta &#8216;south&#8217;, no diretório raiz do projeto.</p>
+<p>Para mais informações consulte: <a class="reference external" href="http://south.aeracode.org/">http://south.aeracode.org/</a></p>
+<div class="highlight-python"><pre>(pabx-env)$ sudo pip install south</pre>
+</div>
+</div>
+<div class="section" id="conclusao">
+<h3>3.6. Conclusão:<a class="headerlink" href="#conclusao" title="Link permanente para este título">¶</a></h3>
+<p>Por fim utilize o seguinte comando no diretório raiz do projeto para ligar o servidor de desenvolvimento:</p>
+<div class="highlight-python"><pre>$ python manage.py runserver</pre>
+</div>
+<p>A seguinte mensagem deverá ser retornada no terminal em caso de sucesso:</p>
+<div class="highlight-python"><pre>Validating models...
+
+0 errors found
+Django version 1.3.1, using settings 'pabx_ip.settings'
+Development server is running at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.</pre>
+</div>
+<p>Entre com o endereço <a class="reference external" href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> no seu navegador para acessar a interface web do projeto.</p>
 </div>
 </div>
 </div>
@@ -110,9 +145,12 @@ $ source pabx-env/bin/activate</pre>
 <li><a class="reference internal" href="#introducao">1. Introdução</a></li>
 <li><a class="reference internal" href="#ambiente-de-desenvolvimento">2. Ambiente de Desenvolvimento</a></li>
 <li><a class="reference internal" href="#instalacao-do-ambiente-de-desenvolvimento">3. Instalação do ambiente de desenvolvimento</a><ul>
-<li><a class="reference internal" href="#instalacao-do-git-e-clone-do-repositorio">1. Instalação do git e clone do repositório:</a></li>
-<li><a class="reference internal" href="#instalacao-e-ativacao-do-virtualenv">2. Instalação e ativação do virtualenv:</a></li>
-<li><a class="reference internal" href="#instalacao-do-pinax">2. Instalação do Pinax:</a></li>
+<li><a class="reference internal" href="#instalacao-do-git-e-clone-do-repositorio">3.1. Instalação do git e clone do repositório:</a></li>
+<li><a class="reference internal" href="#instalacao-e-ativacao-do-virtualenv">3.2. Instalação e ativação do virtualenv:</a></li>
+<li><a class="reference internal" href="#instalacao-do-pinax-e-outros-apps">3.3. Instalação do Pinax e outros apps:</a></li>
+<li><a class="reference internal" href="#instalacao-do-django">3.4. Instalação do Django:</a></li>
+<li><a class="reference internal" href="#instalacao-do-django-south">3.5. Instalação do Django South:</a></li>
+<li><a class="reference internal" href="#conclusao">3.6. Conclusão:</a></li>
 </ul>
 </li>
 </ul>
@@ -123,8 +161,8 @@ $ source pabx-env/bin/activate</pre>
   <p class="topless"><a href="index.html"
                         title="capítulo anterior">Bem vindo à documentação do projeto PABX-IP</a></p>
   <h4>Próximo tópico</h4>
-  <p class="topless"><a href="bibliotecas.html"
-                        title="próximo capítulo">Bibliotecas externas</a></p>
+  <p class="topless"><a href="codigo.html"
+                        title="próximo capítulo">Visão geral do código</a></p>
   <h3>Esta Página</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/inicio.txt"
@@ -154,7 +192,7 @@ $ source pabx-env/bin/activate</pre>
           <a href="genindex.html" title="Índice Geral"
              >índice</a></li>
         <li class="right" >
-          <a href="bibliotecas.html" title="Bibliotecas externas"
+          <a href="codigo.html" title="Visão geral do código"
              >próximo</a> |</li>
         <li class="right" >
           <a href="index.html" title="Bem vindo à documentação do projeto PABX-IP"

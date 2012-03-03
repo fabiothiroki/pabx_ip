@@ -24,15 +24,9 @@ Conteúdo
    :maxdepth: 2
 
    inicio
-   bibliotecas
    codigo
+   bibliotecas
    futuro
 
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
