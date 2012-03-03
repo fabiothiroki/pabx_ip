@@ -14,7 +14,7 @@ Cada biblioteca utilizada possui também uma documentação própria, que pode e
 --------------------
 http://twitter.github.com/bootstrap/
 
-Utilizado como base da identidade visual do projeto. É interessante que o
+Utilizado como base da identidade visual do projeto.
 
 ---------------
 3. Django South

@@ -74,6 +74,11 @@ def settings(request):
     show = []
     for u in users:
 
+        # 1) Na tabela de exibição de usuários, não é para ser exibido o usuário 'root' pois não deve ser possível editá-lo,
+        # visto que ele é somente o super-admin do sistema.
+        # 2) Não será exibido usuários Administradores para um Administrador logado, a visualização/edição/remoção de outros
+        # Administradores só poderá ser feita pelo usuário root
+
         try:
             if u.username != 'root':
                 up = UserProfile.objects.get(profile=u.id)
@@ -179,6 +184,7 @@ def edit(request,offset):
             'password2':user.password,
             'ramal':profile.ramal,
             'admin':profile.admin,
+            'group':profile.group,
             'edit':int(offset),
         })
 
@@ -282,11 +288,15 @@ def edit_self(request):
 
 def save_or_update(form,user=None,profile=None):
 
+    # 1) Esse método foi criado como forma de refatoração do código, visto que ele é usado similarmente na criação
+    # e na edição de um usuário que não o próprio logado
+
     nome = form.cleaned_data['nome']
     email = form.cleaned_data['email']
     password = form.cleaned_data['password']
     ramal = form.cleaned_data['ramal']
     admin = form.cleaned_data['admin']
+    group = form.cleaned_data['group']
 
     if (user == None):
         user = User()
@@ -309,8 +319,10 @@ def save_or_update(form,user=None,profile=None):
         profile.profile = user
         profile.ramal = ramal
         profile.admin = admin
+        profile.group = group
 
-
+        # 1) Aqui salvamos o password numa outra tabela diferente do sistema Auth nativo do Django, para que seja possível
+        # a recuperação dessa senha depois
         if user.password != password:
             profile.passw = encrypt(password)
 

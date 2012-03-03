@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-from accounts.models import UserProfile
-from django.contrib.auth.models import User,Group
+from django.contrib.auth.models import User
 from django import forms
 from django.forms.widgets import *
-#from django.forms import *
+
+from accounts.models import UserProfile
+from groups.models import Group
 
 class UserForm(forms.Form):
   def __init__(self, *args, **kwargs):
@@ -16,18 +17,9 @@ class UserForm(forms.Form):
   password = forms.CharField(widget=PasswordInput(render_value=True),max_length=100,label='Senha',required=True)
   password2 = forms.CharField(widget=PasswordInput(render_value=True),max_length=100,label='Confirmação de Senha',required=True)
   ramal = forms.IntegerField(required=True,min_value=0)
-  #group = forms.ModelChoiceField(queryset=Group.objects.all(),label="Grupo")
+  group = forms.ModelChoiceField(queryset=Group.objects.all(),label="Grupo")
   admin = forms.BooleanField(required=False,label="Administrador")
   
-
-  #can_call_ramal = forms.BooleanField(required=False,label="Permitir ligações para ramal",initial=True)
-  #can_call_emergency = forms.BooleanField(required=False,label="Permitir ligações para emergência",initial=True)
-  #can_call_fix = forms.BooleanField(required=False,label="Permitir ligações para fixo local")
-  #can_call_mobile = forms.BooleanField(required=False,label="Permitir ligações para celular local")
-  #can_call_ddd = forms.BooleanField(required=False,label="Permitir ligações DDD")
-  #can_call_ddi = forms.BooleanField(required=False,label="Permitir ligações DDI")
-  #can_call_0800 = forms.BooleanField(required=False,label="Permitir ligações 0800")
-  #can_call_0300 = forms.BooleanField(required=False,label="Permitir ligações 0300")
   edit = forms.IntegerField(widget = HiddenInput())
 
   def clean(self):

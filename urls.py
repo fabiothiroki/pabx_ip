@@ -36,7 +36,7 @@ urlpatterns = patterns("",
     url(r'^skypelist/remove/(\d+)/$','skypelist.views.delete'),
 
     url(r'^groups/index/$', 'groups.views.index'),
-    #url(r'^skypelist/create/$', 'skypelist.views.create'),
+    url(r'^groups/create/$', 'groups.views.create'),
     #url(r'^skypelist/edit/(\d+)/$','skypelist.views.edit'),
     #url(r'^skypelist/remove/(\d+)/$','skypelist.views.delete'),
 )
