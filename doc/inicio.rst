@@ -18,3 +18,17 @@ Nessa seção será mostrado as ferramentas que são pré-requisitos para desenv
 --------------------------------------------
 3. Instalação do ambiente de desenvolvimento
 --------------------------------------------
+
+Esse tutorial foi feito no Ubuntu 11.10, usando o repositório git onde o código estava sendo versionado na época em que essa documentação foi feita. Caso o desenvolvedor já possua o código fonte, pule essa parte inicial.
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. Instalação do git e clone do repositório:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``$sudo apt-get install git``
+``$git clone https://github.com/fabiothiroki/pabx_ip.git``
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2. Instalação e configuração do Pinax:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``$sudo apt-get install python-pip``
+``$sudo pip install Pinax``
