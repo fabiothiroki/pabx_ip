@@ -1,0 +1,12 @@
+\begin{theindex}
+\def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
+
+  \bigletter A
+  \item accounts.forms (m\IeC {\'o}dulo), \hyperpage{8}
+  \item accounts.models (m\IeC {\'o}dulo), \hyperpage{7}
+
+  \indexspace
+  \bigletter U
+  \item UserProfile (classe em accounts.models), \hyperpage{7}
+
+\end{theindex}

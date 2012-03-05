@@ -19,3 +19,6 @@ Utilizado como base da identidade visual do projeto. Embora o Pinax já venha co
 ---------------
 3. jQuery
 ---------------
+http://jquery.com/
+
+É o framework Javascript utilizado no projeto.

@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>App Accounts &mdash; PABX IP 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="PABX IP 0.1 documentation" href="../index.html" />
+    <link rel="next" title="Bibliotecas externas" href="../bibliotecas.html" />
+    <link rel="prev" title="Visão geral do código" href="../codigo.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice Geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos do Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="../bibliotecas.html" title="Bibliotecas externas"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="../codigo.html" title="Visão geral do código"
+             accesskey="P">anterior</a> |</li>
+        <li><a href="../index.html">PABX IP 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="app-accounts">
+<span id="accounts"></span><h1>App Accounts<a class="headerlink" href="#app-accounts" title="Link permanente para este título">¶</a></h1>
+<dl class="docutils">
+<dt>Este app é responsável por:</dt>
+<dd><ul class="first last simple">
+<li>Definir privilégios de administrador a usuários e limitar acesso a usuários comuns</li>
+<li>Cadastro, edição, listagem e remoção de usuários</li>
+<li>Autenticação e recuperação de senha</li>
+</ul>
+</dd>
+</dl>
+<div class="section" id="module-accounts.models">
+<span id="modelos"></span><h2>Modelos<a class="headerlink" href="#module-accounts.models" title="Link permanente para este título">¶</a></h2>
+<p>No arquivo models.py estão as classes definidas para armazenar informações extras do usuário. Podemos observar que a classe UserProfile tem uma chave estrangeira na classe User, que é a classe padrão para usuários do Django. Desta maneira, podemos extender os atributos da classe User sem alterar a estrutura de usuário do Django, bastando apenas fazer essa pequena extensão.</p>
+<p>Os atributos definidos na classe UserProfile estão detalhados a seguir:</p>
+<dl class="class">
+<dt id="accounts.models.UserProfile">
+<em class="property">class </em><tt class="descclassname">accounts.models.</tt><tt class="descname">UserProfile</tt><a class="headerlink" href="#accounts.models.UserProfile" title="Link permanente para esta definição">¶</a></dt>
+<dd><ul class="simple">
+<li><strong>profile</strong>: Chave estrangeira que associa um UserProfile a um Usuário. Pode haver apenas um UserProfile por User.</li>
+<li><strong>ramal</strong>: Ramal associado a um usuário. Esse número é utilizado para fazer ligações.</li>
+<li><strong>passw</strong>: É a cópia da senha do usuário salva encriptadamente. É utilizada para recuperação de senha.</li>
+<li><strong>admin</strong>: Indica se o usuário possui o privilégio de administrador.</li>
+<li><strong>group</strong>: Indica o grupo o qual o usuário pertence.</li>
+</ul>
+</dd></dl>
+
+</div>
+<div class="section" id="module-accounts.forms">
+<span id="formularios"></span><h2>Formulários<a class="headerlink" href="#module-accounts.forms" title="Link permanente para este título">¶</a></h2>
+<dl class="class">
+<dt id="accounts.forms.UserForm">
+<em class="property">class </em><tt class="descclassname">accounts.forms.</tt><tt class="descname">UserForm</tt><a class="headerlink" href="#accounts.forms.UserForm" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Formulário utilizado pelo administrador para editar ou criar usuários. Além dos campos padrões relativos a classe User e a classe UserProfile existe um <em>hidden input</em> que contém o id do usuário em caso de edição, para que possamos validar as informações na hora de salvar no banco de dados.</p>
+<p>O método clean é sobreescrito para validarmos a confirmação de senha e no caso de edição, temos que permitir o salvamento de um ramal ou email já existente.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="accounts.forms.OnlyUserForm">
+<em class="property">class </em><tt class="descclassname">accounts.forms.</tt><tt class="descname">OnlyUserForm</tt><a class="headerlink" href="#accounts.forms.OnlyUserForm" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Formulário utilizado para que um usuário sem privilégios de administrador possa mudar seu email ou senha.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="accounts.forms.PassResetForm">
+<em class="property">class </em><tt class="descclassname">accounts.forms.</tt><tt class="descname">PassResetForm</tt><a class="headerlink" href="#accounts.forms.PassResetForm" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Formulário utilizado para que um usuário possa receber sua senha esquecida no seu email. Apenas emails cadastrados são aceitos.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">App Accounts</a><ul>
+<li><a class="reference internal" href="#module-accounts.models">Modelos</a></li>
+<li><a class="reference internal" href="#module-accounts.forms">Formulários</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="../codigo.html"
+                        title="capítulo anterior">Visão geral do código</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="../bibliotecas.html"
+                        title="próximo capítulo">Bibliotecas externas</a></p>
+  <h3>Esta Página</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/apps/accounts.txt"
+           rel="nofollow">Exibir Fonte</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Pesquisa rápida</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ir" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Digite os termos da busca ou o nome de um módulo, classe ou função.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice Geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos do Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="../bibliotecas.html" title="Bibliotecas externas"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="../codigo.html" title="Visão geral do código"
+             >anterior</a> |</li>
+        <li><a href="../index.html">PABX IP 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Fabio Hiroki.
+      Criado com <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

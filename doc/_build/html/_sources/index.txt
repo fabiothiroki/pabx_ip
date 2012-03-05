@@ -14,8 +14,7 @@ Esta documentação tem o objetivo de servir de base para auxiliar o entendiment
 Recomendações
 -------------
 
-Antes de começar, é importante que o leitor tenha um conhecimento geral de programação orientada a objetos, banco de dados e desenvolvimento web. Para entendimento completo dessa documentação é necessário um conhecimento prévio em Python, Javascript (jQuery) e o framework Django.
-
+Antes de começar, é importante que o leitor tenha um conhecimento geral de programação orientada a objetos, banco de dados e desenvolvimento web. É indispensável um conhecimento prévio no framework Django.
 
 Conteúdo
 --------
@@ -25,6 +24,7 @@ Conteúdo
 
    inicio
    codigo
+   apps/accounts.rst
    bibliotecas
    futuro
 

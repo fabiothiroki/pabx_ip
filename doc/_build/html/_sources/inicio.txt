@@ -111,3 +111,5 @@ A seguinte mensagem deverá ser retornada no terminal em caso de sucesso:
 	Quit the server with CONTROL-C.
 
 Entre com o endereço http://127.0.0.1:8000/ no seu navegador para acessar a interface web do projeto.
+
+O banco de dados padrão do projeto vem com o usuário super-admin com login *root* e senha *1234*.
