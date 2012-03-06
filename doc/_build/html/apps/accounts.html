@@ -155,6 +155,43 @@
 <dd><p>Método que faz a associação entre um form e os objetos User e UserProfile. Caso os parâmetros user e profile não sejam vazios, a função interpreta como edição de usuário, e terá que fazer a busca dele no banco.</p>
 </dd></dl>
 
+<dl class="function">
+<dt id="accounts.views.password_reset">
+<tt class="descclassname">accounts.views.</tt><tt class="descname">password_reset</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#accounts.views.password_reset" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna inicialmente o template do formulário PassResetForm onde o usuário deverá digitar um email cadastrado válido. Após a submissão do formulário, o sistema checa se existe um servidor smtp pré-cadastrado pelo administrador para envio de emails. Em caso positivo, o email é enviado, e retorna o template indicando uma mensagem de sucesso.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="accounts.views.encrypt">
+<tt class="descclassname">accounts.views.</tt><tt class="descname">encrypt</tt><big>(</big><em>plaintext</em><big>)</big><a class="headerlink" href="#accounts.views.encrypt" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Função que retorna a variável <em>plaintext</em> encriptada. Usada para salvar a senha encriptada dos usuários no banco.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="accounts.views.unencrypt">
+<tt class="descclassname">accounts.views.</tt><tt class="descname">unencrypt</tt><big>(</big><em>encrypted_password</em><big>)</big><a class="headerlink" href="#accounts.views.unencrypt" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Função que retorna a variável <em>encrypted_password</em> desencriptada. Usada para recuperar a senha dos usuários em caso de esquecimento.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="templates">
+<h2>Templates<a class="headerlink" href="#templates" title="Link permanente para este título">¶</a></h2>
+<p>Aqui serão listados os templates específicos utilizados por esse App, contidos na pasta &#8220;accounts/templates/&#8221;</p>
+<blockquote>
+<div><ul class="simple">
+<li>password_reset_form.html: utilizado para renderizar o formulário para recuperação de senha.</li>
+<li>password_reset_success.html: utilizado para mostrar a mensagem de sucesso na recuperação de senha.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-accounts.decorators">
+<span id="decorators"></span><h2>Decorators<a class="headerlink" href="#module-accounts.decorators" title="Link permanente para este título">¶</a></h2>
+<dl class="function">
+<dt id="accounts.decorators.is_admin">
+<tt class="descclassname">accounts.decorators.</tt><tt class="descname">is_admin</tt><big>(</big><em>function</em><big>)</big><a class="headerlink" href="#accounts.decorators.is_admin" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Checa se o User logado possui o atributo admin na respectiva classe UserProfile. Usado para limitar o acesso a certas Views que apenas administradores podem acessar.</p>
+</dd></dl>
+
 </div>
 </div>
 
@@ -170,6 +207,8 @@
 <li><a class="reference internal" href="#module-accounts.models">Modelos</a></li>
 <li><a class="reference internal" href="#module-accounts.forms">Formulários</a></li>
 <li><a class="reference internal" href="#module-accounts.views">Views</a></li>
+<li><a class="reference internal" href="#templates">Templates</a></li>
+<li><a class="reference internal" href="#module-accounts.decorators">Decorators</a></li>
 </ul>
 </li>
 </ul>

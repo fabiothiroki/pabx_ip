@@ -81,6 +81,31 @@ Views
 
     Método que faz a associação entre um form e os objetos User e UserProfile. Caso os parâmetros user e profile não sejam vazios, a função interpreta como edição de usuário, e terá que fazer a busca dele no banco.
 
+.. function:: password_reset(request)
 
+    Retorna inicialmente o template do formulário PassResetForm onde o usuário deverá digitar um email cadastrado válido. Após a submissão do formulário, o sistema checa se existe um servidor smtp pré-cadastrado pelo administrador para envio de emails. Em caso positivo, o email é enviado, e retorna o template indicando uma mensagem de sucesso.
 
+.. function:: encrypt(plaintext)
+    
+    Função que retorna a variável *plaintext* encriptada. Usada para salvar a senha encriptada dos usuários no banco.
 
+.. function:: unencrypt(encrypted_password)
+
+    Função que retorna a variável *encrypted_password* desencriptada. Usada para recuperar a senha dos usuários em caso de esquecimento.
+
+Templates
+----------------
+
+Aqui serão listados os templates específicos utilizados por esse App, contidos na pasta "accounts/templates/"
+
+    * password_reset_form.html: utilizado para renderizar o formulário para recuperação de senha.
+    * password_reset_success.html: utilizado para mostrar a mensagem de sucesso na recuperação de senha.
+
+Decorators
+----------------
+
+.. module:: accounts.decorators
+
+.. function:: is_admin(function)
+    
+    Checa se o User logado possui o atributo admin na respectiva classe UserProfile. Usado para limitar o acesso a certas Views que apenas administradores podem acessar.

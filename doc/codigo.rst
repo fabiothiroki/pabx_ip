@@ -22,3 +22,5 @@ Cada App documentado contém seu arquivos numa pasta de mesmo nome na raiz princ
 	* Templates: relativo aos arquivos dentro da pasta "templates" (opcional)
 
 Eventualmente algum App possa precisar de arquivos templates adicionais que estarão contidos na pasta "templates" dentro da pasta do App. Além desses arquivos templates, os outros templates padrão estarão contidos na pasta "templates" dentro da pasta raiz.
+
+O mesmo vale para os *decorators*, nem todos os apps possuem o arquivo *decorators.py* em seu diretório
