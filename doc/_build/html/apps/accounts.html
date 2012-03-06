@@ -105,6 +105,57 @@
 </dd></dl>
 
 </div>
+<div class="section" id="module-accounts.views">
+<span id="views"></span><h2>Views<a class="headerlink" href="#module-accounts.views" title="Link permanente para este título">¶</a></h2>
+<dl class="function">
+<dt id="accounts.views.login">
+<tt class="descclassname">accounts.views.</tt><tt class="descname">login</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#accounts.views.login" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>View que inicialmente mostra a tela de login para o usuário, caso o usuário entre na página inicial do projeto ou tente acessar alguma outra página através da url sem estar logado. O usuário ao submeter o formulário de login através de um método POST, fará com que a view tente autenticar esse usuário, e em caso de sucesso, guardará na sessão se o usuário é admininistrador, seu username e seu id e o redirecionará para a página principal. Em caso de falha, a view retorna uma mensagem de erro para o template de login.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="accounts.views.logout">
+<tt class="descclassname">accounts.views.</tt><tt class="descname">logout</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#accounts.views.logout" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Faz o logout do usuário logado e o redireciona para a página de login.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="accounts.views.settings">
+<tt class="descclassname">accounts.views.</tt><tt class="descname">settings</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#accounts.views.settings" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>É a tela que lista todos os usuários do pabx-ip e permite que o administrador escolha qual usuário editar ou remover através de uma interface. Também possui um botão para a tela de cadastro de usuários. É importante lembrar que somente o usuário &#8216;root&#8217; pode editar ou remover outros administradores.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="accounts.views.create">
+<tt class="descclassname">accounts.views.</tt><tt class="descname">create</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#accounts.views.create" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>View que usa o UserForm para cadastrar um novo usuário no sistema. Somente acessível para administradores.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="accounts.views.edit">
+<tt class="descclassname">accounts.views.</tt><tt class="descname">edit</tt><big>(</big><em>request</em>, <em>offset</em><big>)</big><a class="headerlink" href="#accounts.views.edit" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>View que usa o UserForm para editar um usuário pré-cadastrado no sistema. Através do offset passado pela url a view sabe o id do usuário que se deseja modificar. Somente acessível para administradores.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="accounts.views.delete">
+<tt class="descclassname">accounts.views.</tt><tt class="descname">delete</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#accounts.views.delete" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>View usada para remover um usuário do sistema. Através do offset passado pela url a view sabe o id do usuário que se deseja deletar. Primeiramente exibe uma tela de confirmação, e em seguida caso ela se confirme, a classe User e sua respectiva classe UserProfile são removidas do banco de dados.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="accounts.views.edit_self">
+<tt class="descclassname">accounts.views.</tt><tt class="descname">edit_self</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#accounts.views.edit_self" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>View que o usa o OnlyUserForm para que um usuário comum logado para editar seu email ou senha.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="accounts.views.save_or_update">
+<tt class="descclassname">accounts.views.</tt><tt class="descname">save_or_update</tt><big>(</big><em>form</em>, <em>user=None</em>, <em>profile=None</em><big>)</big><a class="headerlink" href="#accounts.views.save_or_update" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Método que faz a associação entre um form e os objetos User e UserProfile. Caso os parâmetros user e profile não sejam vazios, a função interpreta como edição de usuário, e terá que fazer a busca dele no banco.</p>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -118,6 +169,7 @@
 <li><a class="reference internal" href="#">App Accounts</a><ul>
 <li><a class="reference internal" href="#module-accounts.models">Modelos</a></li>
 <li><a class="reference internal" href="#module-accounts.forms">Formulários</a></li>
+<li><a class="reference internal" href="#module-accounts.views">Views</a></li>
 </ul>
 </li>
 </ul>

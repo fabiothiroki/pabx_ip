@@ -44,4 +44,43 @@ Formulários
 
     Formulário utilizado para que um usuário possa receber sua senha esquecida no seu email. Apenas emails cadastrados são aceitos.
 
+Views
+----------------
+
+.. module:: accounts.views
+
+.. function:: login(request)
+
+    View que inicialmente mostra a tela de login para o usuário, caso o usuário entre na página inicial do projeto ou tente acessar alguma outra página através da url sem estar logado. O usuário ao submeter o formulário de login através de um método POST, fará com que a view tente autenticar esse usuário, e em caso de sucesso, guardará na sessão se o usuário é admininistrador, seu username e seu id e o redirecionará para a página principal. Em caso de falha, a view retorna uma mensagem de erro para o template de login.
+
+.. function:: logout(request)
+
+    Faz o logout do usuário logado e o redireciona para a página de login.
+
+.. function:: settings(request)
+
+    É a tela que lista todos os usuários do pabx-ip e permite que o administrador escolha qual usuário editar ou remover através de uma interface. Também possui um botão para a tela de cadastro de usuários. É importante lembrar que somente o usuário 'root' pode editar ou remover outros administradores.
+
+.. function:: create(request)
+
+    View que usa o UserForm para cadastrar um novo usuário no sistema. Somente acessível para administradores.
+
+.. function:: edit(request,offset)
+
+    View que usa o UserForm para editar um usuário pré-cadastrado no sistema. Através do offset passado pela url a view sabe o id do usuário que se deseja modificar. Somente acessível para administradores. 
+
+.. function:: delete(request)
+
+    View usada para remover um usuário do sistema. Através do offset passado pela url a view sabe o id do usuário que se deseja deletar. Primeiramente exibe uma tela de confirmação, e em seguida caso ela se confirme, a classe User e sua respectiva classe UserProfile são removidas do banco de dados.
+
+.. function:: edit_self(request)
+
+    View que o usa o OnlyUserForm para que um usuário comum logado para editar seu email ou senha.
+
+.. function:: save_or_update(form,user=None,profile=None)
+
+    Método que faz a associação entre um form e os objetos User e UserProfile. Caso os parâmetros user e profile não sejam vazios, a função interpreta como edição de usuário, e terá que fazer a busca dele no banco.
+
+
+
 
