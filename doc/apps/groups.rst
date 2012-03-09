@@ -6,6 +6,8 @@ App Groups
 Este app é responsável por:
     * Criar, editar e excluir grupos
     * Associar permissões de usuários a um ou mais grupos
+
+Todas as funcionalidades de grupos é apenas acessível para administradores.
     
 Modelos
 ---------------------------
@@ -30,6 +32,10 @@ Os atributos da classe grupo são:
     * **can_call_0300**: indica se grupo pode fazer ligações 0300.
     
     A função *unicode* serve para retornar o nome do grupo no caso de imprimirmos algum objeto Group.
+
+Formulários
+------------------------------
+
     
 Views
 ----------------
@@ -37,6 +43,12 @@ Views
 .. module:: groups.views
 
 .. function:: index(request)
+
+    Função que retorna a lista com os grupos cadastrados, utilizando o template *crud*. Esse template possui links para edição, remoção e criação de groupos.
+
+.. function:: create(request)
+
+    View que utiliza o *GroupForm* para criar novos grupos.
 
     
 

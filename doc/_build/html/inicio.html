@@ -68,14 +68,15 @@
 <li>Python 2.7 (a versão 3 é incompatível com outras bibliotecas)</li>
 <li>Framework Django + Pinax</li>
 <li>Banco de dados SQLite</li>
+<li>Conexão com a internet</li>
 </ul>
 </div>
 <div class="section" id="instalacao-do-ambiente-de-desenvolvimento">
 <h2>3. Instalação do ambiente de desenvolvimento<a class="headerlink" href="#instalacao-do-ambiente-de-desenvolvimento" title="Link permanente para este título">¶</a></h2>
-<p>Esse tutorial foi feito no Ubuntu 11.10, usando o repositório git onde o código estava sendo versionado na época em que essa documentação foi feita. Caso o desenvolvedor já possua o código fonte, pule a parte 1.</p>
+<p>Esse tutorial foi feito no Ubuntu 10.04, usando o repositório git onde o código estava sendo versionado na época em que essa documentação foi feita. Caso o desenvolvedor já possua o código fonte, pule a parte 1.</p>
 <div class="section" id="instalacao-do-git-e-clone-do-repositorio">
 <h3>3.1. Instalação do git e clone do repositório:<a class="headerlink" href="#instalacao-do-git-e-clone-do-repositorio" title="Link permanente para este título">¶</a></h3>
-<div class="highlight-python"><pre>$ sudo apt-get install git
+<div class="highlight-python"><pre>$ sudo apt-get install git-core
 
 $ git clone https://github.com/fabiothiroki/pabx_ip.git</pre>
 </div>
@@ -84,6 +85,10 @@ $ git clone https://github.com/fabiothiroki/pabx_ip.git</pre>
 <h3>3.2. Instalação e ativação do virtualenv:<a class="headerlink" href="#instalacao-e-ativacao-do-virtualenv" title="Link permanente para este título">¶</a></h3>
 <p>O virtualenv é uma ferramenta de criação de ambientes python isolados. Isso visa facilitar o deploy da aplicação.</p>
 <p>Toda vez que o desenvolvedor quiser rodar o servidor local de desenvolvimento do django é necessário ativar esse ambiente, pois é nele que estarão instalados o Pinax e as bibliotecas python auxiliares.</p>
+<p>Antes de mais nada é interessante que todas as bibliotecas do OS sejam atualizadas</p>
+<div class="highlight-python"><pre>$ sudo apt-get update
+$ sudo apt-get dist-update</pre>
+</div>
 <div class="highlight-python"><pre>$ sudo apt-get install python-pip
 
 $ sudo pip install virtualenv
@@ -97,25 +102,25 @@ $ source pabx-env/bin/activate</pre>
 <h3>3.3. Instalação do Pinax e outros apps:<a class="headerlink" href="#instalacao-do-pinax-e-outros-apps" title="Link permanente para este título">¶</a></h3>
 <p>Pinax é uma plataforma baseada no Django que contém diversos apps pré-instalados.</p>
 <p>Para mais informações consulte: <a class="reference external" href="http://pinaxproject.com/">http://pinaxproject.com/</a></p>
-<div class="highlight-python"><pre>(pabx-env)$ sudo pip install Pinax django_compressor
-(pabx-env)$ sudo pip install django_debug_toolbar
-(pabx-env)$ sudo pip install django_compressor
-(pabx-env)$ sudo pip install django_staticfiles
-(pabx-env)$ sudo pip install pinax_theme_bootstrap</pre>
+<div class="highlight-python"><pre>(pabx-env)$ pip install Pinax
+(pabx-env)$ pip install django_compressor
+(pabx-env)$ pip install django_debug_toolbar
+(pabx-env)$ pip install django_staticfiles
+(pabx-env)$ pip install pinax_theme_bootstrap</pre>
 </div>
 </div>
 <div class="section" id="instalacao-do-django">
 <h3>3.4. Instalação do Django:<a class="headerlink" href="#instalacao-do-django" title="Link permanente para este título">¶</a></h3>
 <p>Django é o framework web utilizado no projeto.</p>
 <p>Para mais informações consulte: <a class="reference external" href="http://djangoproject.com/">http://djangoproject.com/</a></p>
-<div class="highlight-python"><pre>(pabx-env)$ sudo pip install Django</pre>
+<div class="highlight-python"><pre>(pabx-env)$ pip install Django</pre>
 </div>
 </div>
 <div class="section" id="instalacao-do-django-south">
 <h3>3.5. Instalação do Django South:<a class="headerlink" href="#instalacao-do-django-south" title="Link permanente para este título">¶</a></h3>
 <p>O South é utilizado para implementar o controle da estrutura e migração do banco de dados. Seus arquivos estão na pasta &#8216;south&#8217;, no diretório raiz do projeto.</p>
 <p>Para mais informações consulte: <a class="reference external" href="http://south.aeracode.org/">http://south.aeracode.org/</a></p>
-<div class="highlight-python"><pre>(pabx-env)$ sudo pip install south</pre>
+<div class="highlight-python"><pre>(pabx-env)$ pip install south</pre>
 </div>
 </div>
 <div class="section" id="conclusao">

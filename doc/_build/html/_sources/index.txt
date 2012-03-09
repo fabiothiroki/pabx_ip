@@ -25,6 +25,7 @@ Conteúdo
    inicio
    codigo
    apps/accounts.rst
+   apps/groups.rst
    bibliotecas
    futuro
 

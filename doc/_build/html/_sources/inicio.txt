@@ -14,19 +14,20 @@ Nessa seção será mostrado as ferramentas que são pré-requisitos para desenv
 * Python 2.7 (a versão 3 é incompatível com outras bibliotecas)
 * Framework Django + Pinax
 * Banco de dados SQLite
+* Conexão com a internet
 
 --------------------------------------------
 3. Instalação do ambiente de desenvolvimento
 --------------------------------------------
 
-Esse tutorial foi feito no Ubuntu 11.10, usando o repositório git onde o código estava sendo versionado na época em que essa documentação foi feita. Caso o desenvolvedor já possua o código fonte, pule a parte 1.
+Esse tutorial foi feito no Ubuntu 10.04, usando o repositório git onde o código estava sendo versionado na época em que essa documentação foi feita. Caso o desenvolvedor já possua o código fonte, pule a parte 1.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 3.1. Instalação do git e clone do repositório:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
 
-    $ sudo apt-get install git
+    $ sudo apt-get install git-core
 
     $ git clone https://github.com/fabiothiroki/pabx_ip.git
 
@@ -38,6 +39,13 @@ Esse tutorial foi feito no Ubuntu 11.10, usando o repositório git onde o códig
 O virtualenv é uma ferramenta de criação de ambientes python isolados. Isso visa facilitar o deploy da aplicação. 
 
 Toda vez que o desenvolvedor quiser rodar o servidor local de desenvolvimento do django é necessário ativar esse ambiente, pois é nele que estarão instalados o Pinax e as bibliotecas python auxiliares.
+
+Antes de mais nada é interessante que todas as bibliotecas do OS sejam atualizadas
+
+::
+
+    $ sudo apt-get update
+    $ sudo apt-get dist-update
 
 ::
 
@@ -59,11 +67,11 @@ Para mais informações consulte: http://pinaxproject.com/
  
 ::
 
-    (pabx-env)$ sudo pip install Pinax django_compressor
-    (pabx-env)$ sudo pip install django_debug_toolbar
-    (pabx-env)$ sudo pip install django_compressor
-    (pabx-env)$ sudo pip install django_staticfiles
-    (pabx-env)$ sudo pip install pinax_theme_bootstrap
+    (pabx-env)$ pip install Pinax 
+    (pabx-env)$ pip install django_compressor
+    (pabx-env)$ pip install django_debug_toolbar
+    (pabx-env)$ pip install django_staticfiles
+    (pabx-env)$ pip install pinax_theme_bootstrap
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 3.4. Instalação do Django:
@@ -75,7 +83,7 @@ Para mais informações consulte: http://djangoproject.com/
 
 ::
 
-    (pabx-env)$ sudo pip install Django
+    (pabx-env)$ pip install Django
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 3.5. Instalação do Django South:
@@ -87,7 +95,7 @@ Para mais informações consulte: http://south.aeracode.org/
 
 ::
 
-    (pabx-env)$ sudo pip install south
+    (pabx-env)$ pip install south
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 3.6. Conclusão:
