@@ -8,6 +8,10 @@ Este app é responsável por:
     * Associar permissões de usuários a um ou mais grupos
 
 Todas as funcionalidades de grupos é apenas acessível para administradores.
+
+.. warning::
+    
+    Esse App não foi finalizado ainda.
     
 Modelos
 ---------------------------
@@ -35,7 +39,9 @@ Os atributos da classe grupo são:
 
 Formulários
 ------------------------------
+.. module:: groups.forms
 
+.. class:: GroupForm
     
 Views
 ----------------
