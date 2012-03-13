@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.3.5)  5 MAR 2012 16:36
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.3.5)  13 MAR 2012 15:04
 entering extended mode
  %&-line parsing enabled.
 **PABXIP.tex
@@ -896,41 +896,37 @@ LaTeX Font Info:    Try loading font information for TS1+ptm on input line 141.
 (/usr/share/texmf-texlive/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 163.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 166.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [5] [6]
-Overfull \hbox (283.3585pt too wide) in paragraph at lines 270--270
-[]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 270--270
-
- []
-
+) [5] [6] [7]
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 318.
-[7] [8] [9
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 333.
+ [8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 516--517
+
+ []
+
+[10] [11] [12
+
+] [13
 
 
+] (./PABXIP.ind [14
 
-] (./PABXIP.ind [10
 
-
-] [11
-
+] [15
 
 ]) (./PABXIP.aux) ) 
 Here is how much of TeX's memory you used:
- 7997 strings out of 493848
- 108285 string characters out of 1152824
- 194797 words of memory out of 3000000
- 11035 multiletter control sequences out of 15000+50000
+ 8061 strings out of 493848
+ 109718 string characters out of 1152824
+ 196005 words of memory out of 3000000
+ 11069 multiletter control sequences out of 15000+50000
  56831 words of font info for 64 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 45i,11n,45p,405b,432s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,11n,45p,558b,408s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/
 share/texmf-texlive/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-texliv
 e/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/
@@ -939,9 +935,9 @@ pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/t
 exmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri
 8a.pfb>
-Output written on PABXIP.pdf (15 pages, 120334 bytes).
+Output written on PABXIP.pdf (19 pages, 145182 bytes).
 PDF statistics:
- 189 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 270 PDF objects out of 1000 (max. 8388607)
+ 71 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

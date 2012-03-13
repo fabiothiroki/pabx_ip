@@ -13,7 +13,7 @@
 
 
 \title{PABX IP Documentation}
-\date{05/03/2012}
+\date{13/03/2012}
 \release{0.1}
 \author{Fabio Hiroki}
 \newcommand{\sphinxlogo}{}
@@ -150,18 +150,21 @@ Framework Django + Pinax
 \item {} 
 Banco de dados SQLite
 
+\item {} 
+Conexão com a internet
+
 \end{itemize}
 
 
 \subsection{3. Instalação do ambiente de desenvolvimento}
 \label{inicio:instalacao-do-ambiente-de-desenvolvimento}
-Esse tutorial foi feito no Ubuntu 11.10, usando o repositório git onde o código estava sendo versionado na época em que essa documentação foi feita. Caso o desenvolvedor já possua o código fonte, pule a parte 1.
+Esse tutorial foi feito no Ubuntu 10.04, usando o repositório git onde o código estava sendo versionado na época em que essa documentação foi feita. Caso o desenvolvedor já possua o código fonte, pule a parte 1.
 
 
 \subsubsection{3.1. Instalação do git e clone do repositório:}
 \label{inicio:instalacao-do-git-e-clone-do-repositorio}
 \begin{Verbatim}[commandchars=\\\{\}]
-\$ sudo apt-get install git
+\$ sudo apt-get install git-core
 
 \$ git clone https://github.com/fabiothiroki/pabx\_ip.git
 \end{Verbatim}
@@ -172,6 +175,13 @@ Esse tutorial foi feito no Ubuntu 11.10, usando o repositório git onde o códig
 O virtualenv é uma ferramenta de criação de ambientes python isolados. Isso visa facilitar o deploy da aplicação.
 
 Toda vez que o desenvolvedor quiser rodar o servidor local de desenvolvimento do django é necessário ativar esse ambiente, pois é nele que estarão instalados o Pinax e as bibliotecas python auxiliares.
+
+Antes de mais nada é interessante que todas as bibliotecas do OS sejam atualizadas
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\$ sudo apt-get update
+\$ sudo apt-get dist-update
+\end{Verbatim}
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \$ sudo apt-get install python-pip
@@ -191,11 +201,11 @@ Pinax é uma plataforma baseada no Django que contém diversos apps pré-instala
 Para mais informações consulte: \href{http://pinaxproject.com/}{http://pinaxproject.com/}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-(pabx-env)\$ sudo pip install Pinax django\_compressor
-(pabx-env)\$ sudo pip install django\_debug\_toolbar
-(pabx-env)\$ sudo pip install django\_compressor
-(pabx-env)\$ sudo pip install django\_staticfiles
-(pabx-env)\$ sudo pip install pinax\_theme\_bootstrap
+(pabx-env)\$ pip install Pinax
+(pabx-env)\$ pip install django\_compressor
+(pabx-env)\$ pip install django\_debug\_toolbar
+(pabx-env)\$ pip install django\_staticfiles
+(pabx-env)\$ pip install pinax\_theme\_bootstrap
 \end{Verbatim}
 
 
@@ -206,7 +216,7 @@ Django é o framework web utilizado no projeto.
 Para mais informações consulte: \href{http://djangoproject.com/}{http://djangoproject.com/}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-(pabx-env)\$ sudo pip install Django
+(pabx-env)\$ pip install Django
 \end{Verbatim}
 
 
@@ -217,7 +227,7 @@ O South é utilizado para implementar o controle da estrutura e migração do ba
 Para mais informações consulte: \href{http://south.aeracode.org/}{http://south.aeracode.org/}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-(pabx-env)\$ sudo pip install south
+(pabx-env)\$ pip install south
 \end{Verbatim}
 
 
@@ -247,6 +257,10 @@ O banco de dados padrão do projeto vem com o usuário super-admin com login \em
 
 \section{Visão geral do código}
 \label{codigo::doc}\label{codigo:visao-geral-do-codigo}
+A linguagem escolhida (Python) para o desenvolvimento do projeto prioriza a legibilidade do código sobre a velocidade, bem como o framework Django. Assim, um desenvolvedor com uma certa experiência em Python não terá maiores problemas para entender o código, mesmo porque o mesmo se encontra num estágio inicial.
+
+Ainda sim esse documento visa explicar o código mais detalhadamente e ao mesmo tempo dando alguma noção de Django.
+
 Para que o desenvolvedor não fique confuso com a quantidade de arquivos do projeto, será listado aqui os apps desenvolvidos de fato (cada app corresponde a uma pasta na raiz do projeto):
 \begin{itemize}
 \item {} 
@@ -266,8 +280,9 @@ Para que o desenvolvedor não fique confuso com a quantidade de arquivos do proj
 Além dos arquivos \emph{urls.py} e \emph{settings.py} nenhum dos outros arquivos foi codificado de fato anteriormente, mas foi gerado automaticamente pelo framework e suas ferramentas.
 
 O código desenvolvido no projeto está seguindo a estrutura de apps do Django, assim como a documentação relativa a essa parte.
-\begin{description}
-\item[{Cada App documentado contém seu arquivos numa pasta de mesmo nome na raiz principal do projeto. Assim, a estrutura da documentação de cada app passa a ser a seguinte:}] \leavevmode\begin{itemize}
+
+Cada App documentado contém seu arquivos numa pasta de mesmo nome na raiz principal do projeto. Assim, a estrutura da documentação de cada app passa a ser a seguinte:
+\begin{itemize}
 \item {} 
 Formulários: relativo ao arquivo \emph{forms.py}
 
@@ -285,9 +300,9 @@ Templates: relativo aos arquivos dentro da pasta ``templates'' (opcional)
 
 \end{itemize}
 
-\end{description}
-
 Eventualmente algum App possa precisar de arquivos templates adicionais que estarão contidos na pasta ``templates'' dentro da pasta do App. Além desses arquivos templates, os outros templates padrão estarão contidos na pasta ``templates'' dentro da pasta raiz.
+
+O mesmo vale para os \emph{decorators}, nem todos os apps possuem o arquivo \emph{decorators.py} em seu diretório
 
 
 \section{App Accounts}
@@ -307,8 +322,8 @@ Autenticação e recuperação de senha
 \end{description}
 
 
-\subsection{Modelos (arquivo models.py)}
-\label{apps/accounts:module-accounts.models}\label{apps/accounts:modelos-arquivo-models-py}\index{accounts.models (módulo)}
+\subsection{Modelos}
+\label{apps/accounts:module-accounts.models}\label{apps/accounts:modelos}\index{accounts.models (módulo)}
 No arquivo models.py estão as classes definidas para armazenar informações extras do usuário. Podemos observar que a classe UserProfile tem uma chave estrangeira na classe User, que é a classe padrão para usuários do Django. Desta maneira, podemos extender os atributos da classe User sem alterar a estrutura de usuário do Django, bastando apenas fazer essa pequena extensão.
 
 Os atributos definidos na classe UserProfile estão detalhados a seguir:
@@ -337,8 +352,243 @@ Os atributos definidos na classe UserProfile estão detalhados a seguir:
 
 
 
-\subsection{Formulários (arquivo forms.py)}
-\label{apps/accounts:formularios-arquivo-forms-py}\label{apps/accounts:module-accounts.forms}\index{accounts.forms (módulo)}
+\subsection{Formulários}
+\label{apps/accounts:module-accounts.forms}\label{apps/accounts:formularios}\index{accounts.forms (módulo)}\index{UserForm (classe em accounts.forms)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.forms.UserForm}\pysigline{\strong{class }\code{accounts.forms.}\bfcode{UserForm}}
+Formulário utilizado pelo administrador para editar ou criar usuários. Além dos campos padrões relativos a classe User e a classe UserProfile existe um \emph{hidden input} que contém o id do usuário em caso de edição, para que possamos validar as informações na hora de salvar no banco de dados.
+
+O método clean é sobreescrito para validarmos a confirmação de senha e no caso de edição, temos que permitir o salvamento de um ramal ou email já existente.
+
+\end{fulllineitems}
+
+\index{OnlyUserForm (classe em accounts.forms)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.forms.OnlyUserForm}\pysigline{\strong{class }\code{accounts.forms.}\bfcode{OnlyUserForm}}
+Formulário utilizado para que um usuário sem privilégios de administrador possa mudar seu email ou senha.
+
+\end{fulllineitems}
+
+\index{PassResetForm (classe em accounts.forms)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.forms.PassResetForm}\pysigline{\strong{class }\code{accounts.forms.}\bfcode{PassResetForm}}
+Formulário utilizado para que um usuário possa receber sua senha esquecida no seu email. Apenas emails cadastrados são aceitos.
+
+\end{fulllineitems}
+
+
+
+\subsection{Views}
+\label{apps/accounts:module-accounts.views}\label{apps/accounts:views}\index{accounts.views (módulo)}\index{login() (no módulo accounts.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.views.login}\pysiglinewithargsret{\code{accounts.views.}\bfcode{login}}{\emph{request}}{}
+View que inicialmente mostra a tela de login para o usuário, caso o usuário entre na página inicial do projeto ou tente acessar alguma outra página através da url sem estar logado. O usuário ao submeter o formulário de login através de um método POST, fará com que a view tente autenticar esse usuário, e em caso de sucesso, guardará na sessão se o usuário é admininistrador, seu username e seu id e o redirecionará para a página principal. Em caso de falha, a view retorna uma mensagem de erro para o template de login.
+
+\end{fulllineitems}
+
+\index{logout() (no módulo accounts.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.views.logout}\pysiglinewithargsret{\code{accounts.views.}\bfcode{logout}}{\emph{request}}{}
+Faz o logout do usuário logado e o redireciona para a página de login.
+
+\end{fulllineitems}
+
+\index{settings() (no módulo accounts.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.views.settings}\pysiglinewithargsret{\code{accounts.views.}\bfcode{settings}}{\emph{request}}{}
+É a tela que lista todos os usuários do pabx-ip e permite que o administrador escolha qual usuário editar ou remover através de uma interface. Também possui um botão para a tela de cadastro de usuários. É importante lembrar que somente o usuário `root' pode editar ou remover outros administradores.
+
+\end{fulllineitems}
+
+\index{create() (no módulo accounts.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.views.create}\pysiglinewithargsret{\code{accounts.views.}\bfcode{create}}{\emph{request}}{}
+View que usa o UserForm para cadastrar um novo usuário no sistema. Somente acessível para administradores.
+
+\end{fulllineitems}
+
+\index{edit() (no módulo accounts.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.views.edit}\pysiglinewithargsret{\code{accounts.views.}\bfcode{edit}}{\emph{request}, \emph{offset}}{}
+View que usa o UserForm para editar um usuário pré-cadastrado no sistema. Através do offset passado pela url a view sabe o id do usuário que se deseja modificar. Somente acessível para administradores.
+
+\end{fulllineitems}
+
+\index{delete() (no módulo accounts.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.views.delete}\pysiglinewithargsret{\code{accounts.views.}\bfcode{delete}}{\emph{request}}{}
+View usada para remover um usuário do sistema. Através do offset passado pela url a view sabe o id do usuário que se deseja deletar. Primeiramente exibe uma tela de confirmação, e em seguida caso ela se confirme, a classe User e sua respectiva classe UserProfile são removidas do banco de dados.
+
+\end{fulllineitems}
+
+\index{edit\_self() (no módulo accounts.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.views.edit_self}\pysiglinewithargsret{\code{accounts.views.}\bfcode{edit\_self}}{\emph{request}}{}
+View que o usa o OnlyUserForm para que um usuário comum logado para editar seu email ou senha.
+
+\end{fulllineitems}
+
+\index{save\_or\_update() (no módulo accounts.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.views.save_or_update}\pysiglinewithargsret{\code{accounts.views.}\bfcode{save\_or\_update}}{\emph{form}, \emph{user=None}, \emph{profile=None}}{}
+Método que faz a associação entre um form e os objetos User e UserProfile. Caso os parâmetros user e profile não sejam vazios, a função interpreta como edição de usuário, e terá que fazer a busca dele no banco.
+
+\end{fulllineitems}
+
+\index{password\_reset() (no módulo accounts.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.views.password_reset}\pysiglinewithargsret{\code{accounts.views.}\bfcode{password\_reset}}{\emph{request}}{}
+Retorna inicialmente o template do formulário PassResetForm onde o usuário deverá digitar um email cadastrado válido. Após a submissão do formulário, o sistema checa se existe um servidor smtp pré-cadastrado pelo administrador para envio de emails. Em caso positivo, o email é enviado, e retorna o template indicando uma mensagem de sucesso.
+
+\end{fulllineitems}
+
+\index{encrypt() (no módulo accounts.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.views.encrypt}\pysiglinewithargsret{\code{accounts.views.}\bfcode{encrypt}}{\emph{plaintext}}{}
+Função que retorna a variável \emph{plaintext} encriptada. Usada para salvar a senha encriptada dos usuários no banco.
+
+\end{fulllineitems}
+
+\index{unencrypt() (no módulo accounts.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.views.unencrypt}\pysiglinewithargsret{\code{accounts.views.}\bfcode{unencrypt}}{\emph{encrypted\_password}}{}
+Função que retorna a variável \emph{encrypted\_password} desencriptada. Usada para recuperar a senha dos usuários em caso de esquecimento.
+
+\end{fulllineitems}
+
+
+
+\subsection{Templates}
+\label{apps/accounts:templates}
+Aqui serão listados os templates específicos utilizados por esse App, contidos na pasta ``accounts/templates/''
+\begin{itemize}
+\item {} 
+password\_reset\_form.html: utilizado para renderizar o formulário para recuperação de senha.
+
+\item {} 
+password\_reset\_success.html: utilizado para mostrar a mensagem de sucesso na recuperação de senha.
+
+\end{itemize}
+
+
+\subsection{Decorators}
+\label{apps/accounts:module-accounts.decorators}\label{apps/accounts:decorators}\index{accounts.decorators (módulo)}\index{is\_admin() (no módulo accounts.decorators)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/accounts:accounts.decorators.is_admin}\pysiglinewithargsret{\code{accounts.decorators.}\bfcode{is\_admin}}{\emph{function}}{}
+Checa se o User logado possui o atributo admin na respectiva classe UserProfile. Usado para limitar o acesso a certas Views que apenas administradores podem acessar.
+
+\end{fulllineitems}
+
+
+
+\section{App Groups}
+\label{apps/groups:app-groups}\label{apps/groups::doc}\label{apps/groups:groups}\begin{description}
+\item[{Este app é responsável por:}] \leavevmode\begin{itemize}
+\item {} 
+Criar, editar e excluir grupos
+
+\item {} 
+Associar permissões de usuários a um ou mais grupos
+
+\end{itemize}
+
+\end{description}
+
+Todas as funcionalidades de grupos é apenas acessível para administradores.
+
+\begin{notice}{warning}{Aviso:}
+Esse App não foi finalizado ainda, portanto não atende ainda a todos os requisitos atuais do projeto. Porém no estágio em que ele está desenvolvido é possível rodar o App sem problemas.
+\end{notice}
+
+
+\subsection{Modelos}
+\label{apps/groups:modelos}\label{apps/groups:module-groups.models}\index{groups.models (módulo)}
+Existe uma única classe \emph{Group} definida aqui, que corresponde obviamente a um grupo. Um uso prático para essa classe é poder separar grupos de usuários por departamento, por exemplo: ``grupo recepção'' e ``grupo gerência''.
+
+A associação entre grupos e usuários está definida no model \emph{UserProfile} no qual o atributo \emph{group} define o grupo do usuário. Portanto, um grupo possui vários usuários, mas um usuário só pode se associar a um grupo.
+
+Os atributos da classe grupo são:
+\index{Group (classe em groups.models)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/groups:groups.models.Group}\pysigline{\strong{class }\code{groups.models.}\bfcode{Group}}~\begin{itemize}
+\item {} 
+\textbf{name}: nome do grupo, usado apenas para identificá-lo.
+
+\item {} 
+\textbf{can\_call\_ramal}: permissão dada como padrão para todos os grupos, mantemos aqui apenas para fins de visualização.
+
+\item {} 
+\textbf{can\_call\_emergency}: permissão dada como padrão para todos os grupos, mantemos aqui apenas para fins de visualização.
+
+\item {} 
+\textbf{can\_call\_fix}: indica se o grupo pode fazer ligações para fixo local.
+
+\item {} 
+\textbf{can\_call\_mobile}: indica se o grupo pode fazer ligações para celular local.
+
+\item {} 
+\textbf{can\_call\_ddd}: indica se grupo pode fazer ligações DDD.
+
+\item {} 
+\textbf{can\_call\_ddi}: indica se grupo pode fazer ligações DDI.
+
+\item {} 
+\textbf{can\_call\_0800}: indica se grupo pode fazer ligações 0800.
+
+\item {} 
+\textbf{can\_call\_0300}: indica se grupo pode fazer ligações 0300.
+
+\end{itemize}
+
+A função \emph{unicode} serve para retornar o nome do grupo no caso de imprimirmos algum objeto Group.
+
+\end{fulllineitems}
+
+
+
+\subsection{Formulários}
+\label{apps/groups:module-groups.forms}\label{apps/groups:formularios}\index{groups.forms (módulo)}\index{GroupForm (classe em groups.forms)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/groups:groups.forms.GroupForm}\pysigline{\strong{class }\code{groups.forms.}\bfcode{GroupForm}}
+\end{fulllineitems}
+
+
+
+\subsection{Views}
+\label{apps/groups:module-groups.views}\label{apps/groups:views}\index{groups.views (módulo)}\index{index() (no módulo groups.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/groups:groups.views.index}\pysiglinewithargsret{\code{groups.views.}\bfcode{index}}{\emph{request}}{}
+Função que retorna a lista com os grupos cadastrados, utilizando o template \emph{crud}. Esse template possui links para edição, remoção e criação de groupos.
+
+\end{fulllineitems}
+
+\index{create() (no módulo groups.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/groups:groups.views.create}\pysiglinewithargsret{\code{groups.views.}\bfcode{create}}{\emph{request}}{}
+View que utiliza o \emph{GroupForm} para criar novos grupos.
+
+\end{fulllineitems}
+
+
 
 \section{Bibliotecas externas}
 \label{bibliotecas:bibliotecas-externas}\label{bibliotecas::doc}
@@ -371,8 +621,15 @@ Utilizado como base da identidade visual do projeto. Embora o Pinax já venha co
 \begin{theindex}
 \def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
 \bigletter{a}
+\item {\texttt{accounts.decorators}}, \pageref{apps/accounts:module-accounts.decorators}
 \item {\texttt{accounts.forms}}, \pageref{apps/accounts:module-accounts.forms}
 \item {\texttt{accounts.models}}, \pageref{apps/accounts:module-accounts.models}
+\item {\texttt{accounts.views}}, \pageref{apps/accounts:module-accounts.views}
+\indexspace
+\bigletter{g}
+\item {\texttt{groups.forms}}, \pageref{apps/groups:module-groups.forms}
+\item {\texttt{groups.models}}, \pageref{apps/groups:module-groups.models}
+\item {\texttt{groups.views}}, \pageref{apps/groups:module-groups.views}
 \end{theindex}
 
 \renewcommand{\indexname}{Índice}

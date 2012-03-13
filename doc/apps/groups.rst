@@ -11,7 +11,7 @@ Todas as funcionalidades de grupos é apenas acessível para administradores.
 
 .. warning::
     
-    Esse App não foi finalizado ainda.
+    Esse App não foi finalizado ainda, portanto não atende ainda a todos os requisitos atuais do projeto. Porém no estágio em que ele está desenvolvido é possível rodar o App com as funcionalidades atuais sem problemas.
     
 Modelos
 ---------------------------
@@ -42,7 +42,9 @@ Formulários
 .. module:: groups.forms
 
 .. class:: GroupForm
-    
+
+    *ModelForm* que utiliza como modelo a classe *Group*. A partir dele é possível criar ou editar grupos, e a única instância feita por essa classe é desabilitar o checkbox de permissão para ligar para ramal e para emergência, pois estas permissões são dadas como padrão para qualquer grupo.
+
 Views
 ----------------
 
@@ -50,11 +52,13 @@ Views
 
 .. function:: index(request)
 
-    Função que retorna a lista com os grupos cadastrados, utilizando o template *crud*. Esse template possui links para edição, remoção e criação de groupos.
+    Função que retorna a lista com os grupos cadastrados, utilizando o template *crud*. Esse template possui links para edição, remoção e criação de grupos.
 
 .. function:: create(request)
 
     View que utiliza o *GroupForm* para criar novos grupos.
+
+
 
     
 

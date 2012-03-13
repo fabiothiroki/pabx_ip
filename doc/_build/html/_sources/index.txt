@@ -26,6 +26,7 @@ Conteúdo
    codigo
    apps/accounts.rst
    apps/groups.rst
+   apps/skypelist.rst
    bibliotecas
    futuro
 

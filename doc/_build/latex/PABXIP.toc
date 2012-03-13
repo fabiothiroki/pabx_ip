@@ -7,19 +7,26 @@
 \contentsline {subsection}{\numberline {3.1.2}2. Ambiente de Desenvolvimento}{5}{subsection.3.1.2}
 \contentsline {subsection}{\numberline {3.1.3}3. Instala\IeC {\c c}\IeC {\~a}o do ambiente de desenvolvimento}{5}{subsection.3.1.3}
 \contentsline {subsubsection}{3.1. Instala\IeC {\c c}\IeC {\~a}o do git e clone do reposit\IeC {\'o}rio:}{5}{subsubsection*.3}
-\contentsline {subsubsection}{3.2. Instala\IeC {\c c}\IeC {\~a}o e ativa\IeC {\c c}\IeC {\~a}o do virtualenv:}{5}{subsubsection*.4}
+\contentsline {subsubsection}{3.2. Instala\IeC {\c c}\IeC {\~a}o e ativa\IeC {\c c}\IeC {\~a}o do virtualenv:}{6}{subsubsection*.4}
 \contentsline {subsubsection}{3.3. Instala\IeC {\c c}\IeC {\~a}o do Pinax e outros apps:}{6}{subsubsection*.5}
 \contentsline {subsubsection}{3.4. Instala\IeC {\c c}\IeC {\~a}o do Django:}{6}{subsubsection*.6}
 \contentsline {subsubsection}{3.5. Instala\IeC {\c c}\IeC {\~a}o do Django South:}{6}{subsubsection*.7}
 \contentsline {subsubsection}{3.6. Conclus\IeC {\~a}o:}{6}{subsubsection*.8}
 \contentsline {section}{\numberline {3.2}Vis\IeC {\~a}o geral do c\IeC {\'o}digo}{7}{section.3.2}
-\contentsline {section}{\numberline {3.3}App Accounts}{7}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Modelos (arquivo models.py)}{7}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Formul\IeC {\'a}rios (arquivo forms.py)}{8}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}Bibliotecas externas}{8}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}1. Introdu\IeC {\c c}\IeC {\~a}o}{8}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}2. Twitter Bootstrap}{8}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}3. jQuery}{8}{subsection.3.4.3}
-\contentsline {section}{\numberline {3.5}Futuras implementa\IeC {\c c}\IeC {\~o}es}{8}{section.3.5}
-\contentsline {chapter}{\IeC {\'I}ndice de M\IeC {\'o}dulos do Python}{9}{section*.10}
-\contentsline {chapter}{\IeC {\'I}ndice}{11}{section*.11}
+\contentsline {section}{\numberline {3.3}App Accounts}{8}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Modelos}{8}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Formul\IeC {\'a}rios}{8}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Views}{8}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Templates}{9}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.5}Decorators}{9}{subsection.3.3.5}
+\contentsline {section}{\numberline {3.4}App Groups}{10}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Modelos}{10}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Formul\IeC {\'a}rios}{10}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Views}{10}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}Bibliotecas externas}{11}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}1. Introdu\IeC {\c c}\IeC {\~a}o}{11}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}2. Twitter Bootstrap}{11}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}3. jQuery}{11}{subsection.3.5.3}
+\contentsline {section}{\numberline {3.6}Futuras implementa\IeC {\c c}\IeC {\~o}es}{11}{section.3.6}
+\contentsline {chapter}{\IeC {\'I}ndice de M\IeC {\'o}dulos do Python}{13}{section*.29}
+\contentsline {chapter}{\IeC {\'I}ndice}{15}{section*.30}

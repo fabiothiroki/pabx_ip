@@ -71,7 +71,7 @@ Views
 
 .. function:: delete(request)
 
-    View usada para remover um usuário do sistema. Através do offset passado pela url a view sabe o id do usuário que se deseja deletar. Primeiramente exibe uma tela de confirmação, e em seguida caso ela se confirme, a classe User e sua respectiva classe UserProfile são removidas do banco de dados.
+    View usada para remover um usuário do sistema. Através do offset passado pela url a view sabe o id do usuário que se deseja deletar. Primeiramente exibe uma tela de confirmação, e em seguida caso haja confirmação por parte do administrador, a classe User e sua respectiva classe UserProfile são removidas do banco de dados.
 
 .. function:: edit_self(request)
 
