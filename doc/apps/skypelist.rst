@@ -25,7 +25,9 @@ Os atributos da classe *skypeuser* são:
 
 Formulários
 ------------------------------
-.. module:: skypelist.skypeform
+.. module:: skypelist.forms
+
+.. class:: skypeform
 
 	*ModelForm* que utiliza como modelo a classe *skypeuser*. Acrescenta um campo *hidden input* para tratar o caso de edição do usuário, para evitar a validação de campos com mesmos valores.
 

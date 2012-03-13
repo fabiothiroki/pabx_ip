@@ -426,7 +426,7 @@ View que usa o UserForm para editar um usuário pré-cadastrado no sistema. Atra
 
 \begin{fulllineitems}
 \phantomsection\label{apps/accounts:accounts.views.delete}\pysiglinewithargsret{\code{accounts.views.}\bfcode{delete}}{\emph{request}}{}
-View usada para remover um usuário do sistema. Através do offset passado pela url a view sabe o id do usuário que se deseja deletar. Primeiramente exibe uma tela de confirmação, e em seguida caso ela se confirme, a classe User e sua respectiva classe UserProfile são removidas do banco de dados.
+View usada para remover um usuário do sistema. Através do offset passado pela url a view sabe o id do usuário que se deseja deletar. Primeiramente exibe uma tela de confirmação, e em seguida caso haja confirmação por parte do administrador, a classe User e sua respectiva classe UserProfile são removidas do banco de dados.
 
 \end{fulllineitems}
 
@@ -512,7 +512,7 @@ Associar permissões de usuários a um ou mais grupos
 Todas as funcionalidades de grupos é apenas acessível para administradores.
 
 \begin{notice}{warning}{Aviso:}
-Esse App não foi finalizado ainda, portanto não atende ainda a todos os requisitos atuais do projeto. Porém no estágio em que ele está desenvolvido é possível rodar o App sem problemas.
+Esse App não foi finalizado ainda, portanto não atende ainda a todos os requisitos atuais do projeto. Porém no estágio em que ele está desenvolvido é possível rodar o App com as funcionalidades atuais sem problemas.
 \end{notice}
 
 
@@ -567,6 +567,8 @@ A função \emph{unicode} serve para retornar o nome do grupo no caso de imprimi
 
 \begin{fulllineitems}
 \phantomsection\label{apps/groups:groups.forms.GroupForm}\pysigline{\strong{class }\code{groups.forms.}\bfcode{GroupForm}}
+\emph{ModelForm} que utiliza como modelo a classe \emph{Group}. A partir dele é possível criar ou editar grupos, e a única instância feita por essa classe é desabilitar o checkbox de permissão para ligar para ramal e para emergência, pois estas permissões são dadas como padrão para qualquer grupo.
+
 \end{fulllineitems}
 
 
@@ -576,7 +578,7 @@ A função \emph{unicode} serve para retornar o nome do grupo no caso de imprimi
 
 \begin{fulllineitems}
 \phantomsection\label{apps/groups:groups.views.index}\pysiglinewithargsret{\code{groups.views.}\bfcode{index}}{\emph{request}}{}
-Função que retorna a lista com os grupos cadastrados, utilizando o template \emph{crud}. Esse template possui links para edição, remoção e criação de groupos.
+Função que retorna a lista com os grupos cadastrados, utilizando o template \emph{crud}. Esse template possui links para edição, remoção e criação de grupos.
 
 \end{fulllineitems}
 
@@ -585,6 +587,152 @@ Função que retorna a lista com os grupos cadastrados, utilizando o template \e
 \begin{fulllineitems}
 \phantomsection\label{apps/groups:groups.views.create}\pysiglinewithargsret{\code{groups.views.}\bfcode{create}}{\emph{request}}{}
 View que utiliza o \emph{GroupForm} para criar novos grupos.
+
+\end{fulllineitems}
+
+
+
+\section{App Skypelist}
+\label{apps/skypelist:app-skypelist}\label{apps/skypelist::doc}\label{apps/skypelist:skypelist}\begin{description}
+\item[{Esse app é responsável por:}] \leavevmode\begin{itemize}
+\item {} 
+Criar, editar e remover contatos skype
+
+\end{itemize}
+
+\end{description}
+
+Um contato Skype é apenas uma associação entre um nome de usuário Skype pré-cadastrado e um ramal do pabx, sendo que este ramal deve ser único, independente de ser um ramal normal ou ``skype''. A idéia por trás disso está em possibilitar o usuário a fazer ligações skype de um telefone normal, conectado ao PABX-IP.
+
+Todas essas funcionalidades desse App está apenas acessível para Administradores.
+
+
+\subsection{Modelos}
+\label{apps/skypelist:module-skypelist.skypeuser}\label{apps/skypelist:modelos}\index{skypelist.skypeuser (módulo)}
+Existe uma uńica classe \emph{skypeuser} definida aqui, que corresponde a associação entre nome de usuário skype e ramal.
+
+Os atributos da classe \emph{skypeuser} são:
+\index{skypeuser (classe em skypelist.skypeuser)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/skypelist:skypelist.skypeuser.skypeuser}\pysigline{\strong{class }\code{skypelist.skypeuser.}\bfcode{skypeuser}}~\begin{itemize}
+\item {} 
+\textbf{ramal}: número do ramal.
+
+\item {} 
+\textbf{username}: nome de usuário Skype.
+
+\end{itemize}
+
+\end{fulllineitems}
+
+
+
+\subsection{Formulários}
+\label{apps/skypelist:module-skypelist.forms}\label{apps/skypelist:formularios}\index{skypelist.forms (módulo)}\index{skypeform (classe em skypelist.forms)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/skypelist:skypelist.forms.skypeform}\pysigline{\strong{class }\code{skypelist.forms.}\bfcode{skypeform}}
+\emph{ModelForm} que utiliza como modelo a classe \emph{skypeuser}. Acrescenta um campo \emph{hidden input} para tratar o caso de edição do usuário, para evitar a validação de campos com mesmos valores.
+
+\end{fulllineitems}
+
+
+
+\subsection{Views}
+\label{apps/skypelist:views}\label{apps/skypelist:module-skypelist.views}\index{skypelist.views (módulo)}\index{index() (no módulo skypelist.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/skypelist:skypelist.views.index}\pysiglinewithargsret{\code{skypelist.views.}\bfcode{index}}{\emph{request}}{}
+Função que retorna a lista com os usuários skype cadastrados, utilizando o template \emph{crud}. Esse template possui links para edição, remoção e criação.
+
+\end{fulllineitems}
+
+\index{create() (no módulo skypelist.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/skypelist:skypelist.views.create}\pysiglinewithargsret{\code{skypelist.views.}\bfcode{create}}{\emph{request}}{}
+View que utiliza o \emph{skypeform} para criar novos usuários skype.
+
+\end{fulllineitems}
+
+\index{edit() (no módulo skypelist.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/skypelist:skypelist.views.edit}\pysiglinewithargsret{\code{skypelist.views.}\bfcode{edit}}{\emph{request}, \emph{offset}}{}
+View que utiliza o \emph{skypeform} para editar usuários skype pré-cadastrados. Através do offset passado pela url a view sabe o id do usuário skype que se deseja modificar.
+
+\end{fulllineitems}
+
+
+
+\begin{fulllineitems}
+\pysigline{\bfcode{delete(request,offset):}}
+View usada para remover um usuário skype do sistema. Através do offset passado pela url a view sabe o id do usuário skype que se deseja deletar.Primeiramente exibe uma tela de confirmação, e em seguida caso haja confirmação por parte do administrador, a classe \emph{skypuser} é removida do banco de dados.
+
+\end{fulllineitems}
+
+
+
+\section{App Smtp}
+\label{apps/smtp:smtp}\label{apps/smtp:app-smtp}\label{apps/smtp::doc}
+Esse App é responsável pelo cadastro de um servidor smtp que será usado pelo PABX-IP para enviar emails diversos. A partir de um servidor smtp configurado para o PABX-IP é possível, por exemplo, mandar emails a partir de uma conta cadastrada no gmail.
+
+Apenas um único servidor smtp é permitido, sendo que somente o Administrador pode alterar suas configurações.
+
+
+\subsection{Modelos}
+\label{apps/smtp:module-smtp.server}\label{apps/smtp:modelos}\index{smtp.server (módulo)}
+Existe uma única classe \emph{server} definida aqui, que corresponde aos dados do servidor smtp.
+
+Os atributos da classe \emph{server} são:
+\index{server (classe em smtp.server)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/smtp:smtp.server.server}\pysigline{\strong{class }\code{smtp.server.}\bfcode{server}}~\begin{itemize}
+\item {} 
+\textbf{url}: url para o servidor smtp.
+
+\item {} 
+\textbf{port}: porta do servidor smtp.
+
+\item {} 
+\textbf{username}: nome de usuário do servidor smtp.
+
+\item {} 
+\textbf{password}: senha do servidor smtp.
+
+\end{itemize}
+
+\end{fulllineitems}
+
+
+
+\subsection{Formulários}
+\label{apps/smtp:module-smtp.forms}\label{apps/smtp:formularios}\index{smtp.forms (módulo)}\index{smtpform (classe em smtp.forms)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/smtp:smtp.forms.smtpform}\pysigline{\strong{class }\code{smtp.forms.}\bfcode{smtpform}}
+Nesse \emph{ModelForm} cujo modelo é a classe \emph{server}, acrescentamos o campo de confirmação de senha e a validação da mesma. Esse formulário é utilizado tanto para cadastro como edição do servidor smtp.
+
+\end{fulllineitems}
+
+
+
+\subsection{Views}
+\label{apps/smtp:module-smtp.views}\label{apps/smtp:views}\index{smtp.views (módulo)}\index{index() (no módulo smtp.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/smtp:smtp.views.index}\pysiglinewithargsret{\code{smtp.views.}\bfcode{index}}{\emph{request}}{}
+Função que retorna os dados do servidor smtp e imprime num template \emph{crud}. Se o servidor não estiver configurado ainda, uma mensagem será exibida. Essa tela ainda possui links para cadastrar ou editar um servidor smtp.
+
+\end{fulllineitems}
+
+\index{configure() (no módulo smtp.views)}
+
+\begin{fulllineitems}
+\phantomsection\label{apps/smtp:smtp.views.configure}\pysiglinewithargsret{\code{smtp.views.}\bfcode{configure}}{\emph{request}}{}
+Função que permite o cadastro ou a edição do servidor smtp, utilizando o \emph{smtpform}.
 
 \end{fulllineitems}
 
@@ -630,6 +778,14 @@ Utilizado como base da identidade visual do projeto. Embora o Pinax já venha co
 \item {\texttt{groups.forms}}, \pageref{apps/groups:module-groups.forms}
 \item {\texttt{groups.models}}, \pageref{apps/groups:module-groups.models}
 \item {\texttt{groups.views}}, \pageref{apps/groups:module-groups.views}
+\indexspace
+\bigletter{s}
+\item {\texttt{skypelist.forms}}, \pageref{apps/skypelist:module-skypelist.forms}
+\item {\texttt{skypelist.skypeuser}}, \pageref{apps/skypelist:module-skypelist.skypeuser}
+\item {\texttt{skypelist.views}}, \pageref{apps/skypelist:module-skypelist.views}
+\item {\texttt{smtp.forms}}, \pageref{apps/smtp:module-smtp.forms}
+\item {\texttt{smtp.server}}, \pageref{apps/smtp:module-smtp.server}
+\item {\texttt{smtp.views}}, \pageref{apps/smtp:module-smtp.views}
 \end{theindex}
 
 \renewcommand{\indexname}{Índice}

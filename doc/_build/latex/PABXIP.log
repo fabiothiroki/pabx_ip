@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.3.5)  13 MAR 2012 15:04
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.3.5)  13 MAR 2012 17:51
 entering extended mode
  %&-line parsing enabled.
 **PABXIP.tex
@@ -908,22 +908,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 516--517
 
  []
 
-[10] [11] [12
-
-] [13
-
-
-] (./PABXIP.ind [14
-
+[10] [11] [12] [13] [14
 
 ] [15
 
+
+] (./PABXIP.ind [16
+
+
+] [17
+
 ]) (./PABXIP.aux) ) 
 Here is how much of TeX's memory you used:
- 8061 strings out of 493848
- 109718 string characters out of 1152824
- 196005 words of memory out of 3000000
- 11069 multiletter control sequences out of 15000+50000
+ 8109 strings out of 493848
+ 110769 string characters out of 1152824
+ 197112 words of memory out of 3000000
+ 11098 multiletter control sequences out of 15000+50000
  56831 words of font info for 64 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  45i,11n,45p,558b,408s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -935,9 +935,9 @@ pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/t
 exmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/t
 ype1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri
 8a.pfb>
-Output written on PABXIP.pdf (19 pages, 145182 bytes).
+Output written on PABXIP.pdf (21 pages, 158537 bytes).
 PDF statistics:
- 270 PDF objects out of 1000 (max. 8388607)
- 71 named destinations out of 1000 (max. 500000)
- 89 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 328 PDF objects out of 1000 (max. 8388607)
+ 90 named destinations out of 1000 (max. 500000)
+ 105 words of extra memory for PDF output out of 10000 (max. 10000000)
 

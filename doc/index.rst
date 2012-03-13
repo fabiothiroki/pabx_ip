@@ -27,6 +27,7 @@ Conteúdo
    apps/accounts.rst
    apps/groups.rst
    apps/skypelist.rst
+   apps/smtp.rst
    bibliotecas
    futuro
 

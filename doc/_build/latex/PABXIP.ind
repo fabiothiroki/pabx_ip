@@ -9,8 +9,10 @@
 
   \indexspace
   \bigletter C
+  \item configure() (no m\IeC {\'o}dulo smtp.views), \hyperpage{12}
   \item create() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
-  \item create() (no m\IeC {\'o}dulo groups.views), \hyperpage{10}
+  \item create() (no m\IeC {\'o}dulo groups.views), \hyperpage{11}
+  \item create() (no m\IeC {\'o}dulo skypelist.views), \hyperpage{11}
 
   \indexspace
   \bigletter D
@@ -19,6 +21,7 @@
   \indexspace
   \bigletter E
   \item edit() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
+  \item edit() (no m\IeC {\'o}dulo skypelist.views), \hyperpage{11}
   \item edit\_self() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
   \item encrypt() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
 
@@ -28,11 +31,13 @@
   \item GroupForm (classe em groups.forms), \hyperpage{10}
   \item groups.forms (m\IeC {\'o}dulo), \hyperpage{10}
   \item groups.models (m\IeC {\'o}dulo), \hyperpage{10}
-  \item groups.views (m\IeC {\'o}dulo), \hyperpage{10}
+  \item groups.views (m\IeC {\'o}dulo), \hyperpage{11}
 
   \indexspace
   \bigletter I
-  \item index() (no m\IeC {\'o}dulo groups.views), \hyperpage{10}
+  \item index() (no m\IeC {\'o}dulo groups.views), \hyperpage{11}
+  \item index() (no m\IeC {\'o}dulo skypelist.views), \hyperpage{11}
+  \item index() (no m\IeC {\'o}dulo smtp.views), \hyperpage{12}
   \item is\_admin() (no m\IeC {\'o}dulo accounts.decorators), \hyperpage{9}
 
   \indexspace
@@ -52,7 +57,17 @@
   \indexspace
   \bigletter S
   \item save\_or\_update() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
+  \item server (classe em smtp.server), \hyperpage{12}
   \item settings() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
+  \item skypeform (classe em skypelist.forms), \hyperpage{11}
+  \item skypelist.forms (m\IeC {\'o}dulo), \hyperpage{11}
+  \item skypelist.skypeuser (m\IeC {\'o}dulo), \hyperpage{11}
+  \item skypelist.views (m\IeC {\'o}dulo), \hyperpage{11}
+  \item skypeuser (classe em skypelist.skypeuser), \hyperpage{11}
+  \item smtp.forms (m\IeC {\'o}dulo), \hyperpage{12}
+  \item smtp.server (m\IeC {\'o}dulo), \hyperpage{12}
+  \item smtp.views (m\IeC {\'o}dulo), \hyperpage{12}
+  \item smtpform (classe em smtp.forms), \hyperpage{12}
 
   \indexspace
   \bigletter U
