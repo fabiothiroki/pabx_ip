@@ -14,7 +14,9 @@ Esta documentação tem o objetivo de servir de base para auxiliar o entendiment
 Recomendações
 -------------
 
-Antes de começar, é importante que o leitor tenha um conhecimento geral de programação orientada a objetos, banco de dados e desenvolvimento web. É indispensável um conhecimento prévio no framework Django.
+Antes de mais nada, o desenvolvedor deve estar a par da documentação das funcionalidades do PABX que é outro documento separado desse. Alguns diagramas de fluxo e esboço de telas também foram feitos também, mas é bem provável que estes estejam desatualizados agora.
+
+Para entendimento do código e dessa documentação é importante que o leitor tenha um conhecimento geral de programação orientada a objetos, banco de dados e desenvolvimento web. É indispensável um conhecimento prévio no framework Django.
 
 Conteúdo
 --------
@@ -28,6 +30,7 @@ Conteúdo
    apps/groups.rst
    apps/skypelist.rst
    apps/smtp.rst
+   templates
    bibliotecas
    futuro
 

@@ -13,7 +13,7 @@
 
 
 \title{PABX IP Documentation}
-\date{13/03/2012}
+\date{15/03/2012}
 \release{0.1}
 \author{Fabio Hiroki}
 \newcommand{\sphinxlogo}{}
@@ -122,7 +122,9 @@ Esta documentação tem o objetivo de servir de base para auxiliar o entendiment
 
 \chapter{Recomendações}
 \label{index:recomendacoes}
-Antes de começar, é importante que o leitor tenha um conhecimento geral de programação orientada a objetos, banco de dados e desenvolvimento web. É indispensável um conhecimento prévio no framework Django.
+Antes de mais nada, o desenvolvedor deve estar a par da documentação das funcionalidades do PABX que é outro documento separado desse. Alguns diagramas de fluxo e esboço de telas também foram feitos também, mas é bem provável que estes estejam desatualizados agora.
+
+Para entendimento do código e dessa documentação é importante que o leitor tenha um conhecimento geral de programação orientada a objetos, banco de dados e desenvolvimento web. É indispensável um conhecimento prévio no framework Django.
 
 
 \chapter{Conteúdo}
@@ -130,13 +132,10 @@ Antes de começar, é importante que o leitor tenha um conhecimento geral de pro
 
 \section{Para começar}
 \label{inicio::doc}\label{inicio:para-comecar}
-
-\subsection{1. Introdução}
-\label{inicio:introducao}
 Nessa seção será mostrado as ferramentas que são pré-requisitos para desenvolvimento do projeto. Também mostraremos como instalá-las e configurá-las corretamente, para que o desenvolvedor já consiga ao menos rodar o PABX-IP em sua máquina local.
 
 
-\subsection{2. Ambiente de Desenvolvimento}
+\subsection{Ambiente de Desenvolvimento}
 \label{inicio:ambiente-de-desenvolvimento}\begin{itemize}
 \item {} 
 Sistema Operacional (recomendável): Ubuntu
@@ -156,12 +155,12 @@ Conexão com a internet
 \end{itemize}
 
 
-\subsection{3. Instalação do ambiente de desenvolvimento}
+\subsection{Instalação do ambiente de desenvolvimento}
 \label{inicio:instalacao-do-ambiente-de-desenvolvimento}
 Esse tutorial foi feito no Ubuntu 10.04, usando o repositório git onde o código estava sendo versionado na época em que essa documentação foi feita. Caso o desenvolvedor já possua o código fonte, pule a parte 1.
 
 
-\subsubsection{3.1. Instalação do git e clone do repositório:}
+\subsubsection{Instalação do git e clone do repositório:}
 \label{inicio:instalacao-do-git-e-clone-do-repositorio}
 \begin{Verbatim}[commandchars=\\\{\}]
 \$ sudo apt-get install git-core
@@ -170,7 +169,7 @@ Esse tutorial foi feito no Ubuntu 10.04, usando o repositório git onde o códig
 \end{Verbatim}
 
 
-\subsubsection{3.2. Instalação e ativação do virtualenv:}
+\subsubsection{Instalação e ativação do virtualenv:}
 \label{inicio:instalacao-e-ativacao-do-virtualenv}
 O virtualenv é uma ferramenta de criação de ambientes python isolados. Isso visa facilitar o deploy da aplicação.
 
@@ -183,6 +182,8 @@ Antes de mais nada é interessante que todas as bibliotecas do OS sejam atualiza
 \$ sudo apt-get dist-update
 \end{Verbatim}
 
+Agora então vamos a instalação do virtualenv:
+
 \begin{Verbatim}[commandchars=\\\{\}]
 \$ sudo apt-get install python-pip
 
@@ -194,7 +195,7 @@ Antes de mais nada é interessante que todas as bibliotecas do OS sejam atualiza
 \end{Verbatim}
 
 
-\subsubsection{3.3. Instalação do Pinax e outros apps:}
+\subsubsection{Instalação do Pinax e outros apps:}
 \label{inicio:instalacao-do-pinax-e-outros-apps}
 Pinax é uma plataforma baseada no Django que contém diversos apps pré-instalados.
 
@@ -209,7 +210,7 @@ Para mais informações consulte: \href{http://pinaxproject.com/}{http://pinaxpr
 \end{Verbatim}
 
 
-\subsubsection{3.4. Instalação do Django:}
+\subsubsection{Instalação do Django:}
 \label{inicio:instalacao-do-django}
 Django é o framework web utilizado no projeto.
 
@@ -220,7 +221,7 @@ Para mais informações consulte: \href{http://djangoproject.com/}{http://django
 \end{Verbatim}
 
 
-\subsubsection{3.5. Instalação do Django South:}
+\subsubsection{Instalação do Django South:}
 \label{inicio:instalacao-do-django-south}
 O South é utilizado para implementar o controle da estrutura e migração do banco de dados. Seus arquivos estão na pasta `south', no diretório raiz do projeto.
 
@@ -231,7 +232,7 @@ Para mais informações consulte: \href{http://south.aeracode.org/}{http://south
 \end{Verbatim}
 
 
-\subsubsection{3.6. Conclusão:}
+\subsubsection{Conclusão:}
 \label{inicio:conclusao}
 Por fim utilize o seguinte comando no diretório raiz do projeto para ligar o servidor de desenvolvimento:
 
@@ -253,6 +254,21 @@ Quit the server with CONTROL-C.
 Entre com o endereço \href{http://127.0.0.1:8000/}{http://127.0.0.1:8000/} no seu navegador para acessar a interface web do projeto.
 
 O banco de dados padrão do projeto vem com o usuário super-admin com login \emph{root} e senha \emph{1234}.
+
+
+\subsection{Máquina Virtual}
+\label{inicio:maquina-virtual}
+Para facilitar a instalação do ambiente de desenvolvimento foi configurada uma máquina virtual já com as bibliotecas instaladas. O nome de usuário e a sua senha de root respectiva são:
+\begin{itemize}
+\item {} 
+\emph{username:} pabx
+
+\item {} 
+\emph{password:} pabx
+
+\end{itemize}
+
+O diretório do projeto está contido em ``\textasciitilde{}/pabx\_ip/''.
 
 
 \section{Visão geral do código}
@@ -738,32 +754,108 @@ Função que permite o cadastro ou a edição do servidor smtp, utilizando o \em
 
 
 
+\section{Templates Padrão}
+\label{templates:templates-padrao}\label{templates::doc}
+Templates são usados pelo Django para exibir o conteúdo em questão para o usuário, ou seja, é o que o usuário vê de fato.
+
+Os templates padrão são os arquivos html contidos na pasta \emph{templates} logo na raiz do projeto. Apenas alguns arquivos dentre outros contidos nessa mesma pasta são utilizados no projeto, sendo que os não usados são arquivos criados automaticamente pelo Pinax.
+
+Serão listados aqui os templates utilizados:
+\begin{itemize}
+\item {} 
+base.html
+
+\item {} 
+crud.html
+
+\item {} 
+form\_create.html
+
+\item {} 
+form\_delete.html
+
+\item {} 
+form\_success.html
+
+\item {} 
+login.html
+
+\end{itemize}
+
+
+\subsection{base.html}
+\label{templates:base-html}
+É o template base do projeto, que utiliza a mesma estrutura do \emph{fluid layout} do Twitter bootstrap, com alguma modificação para fixar a barra superior. Aqui fica definido o \emph{menu}, o \emph{header} e o \emph{footer}. O conteúdo que eventualmente será carregado na parte do meio, será parte de outro template ``filho'' deste.
+
+A variável ``highlight'' deve ser definida em cada view para manter o link do menu destacado, na seção que o usuário estiver navegando. Assim como a variável ``title'' que define o valor da tag html \emph{title}.
+
+
+\subsection{crud.html}
+\label{templates:crud-html}
+Template que extende o template \emph{base.html} e é responsável por criar as tabelas que darão acesso as operações CRUD (acrônimo de Create, Read, Update e Delete em inglês).
+
+
+\subsection{form\_create.html}
+\label{templates:form-create-html}
+Template que extende o template \emph{base.html} e é responsável por montar a estrutura dos formulários utilizados por criação e edição de dados.
+
+Aqui também existe um script Javascript que facilita a criação do botão ``cancelar'', pois o link é passado pela \emph{view} correspondente.
+
+
+\subsection{form\_delete.html}
+\label{templates:form-delete-html}
+Template que extende o template \emph{base.html} e é responsável por montar a estrutura da tela de confirmação de remoção de algum dado.
+
+Aqui também existe um script Javascript que facilita a criação do botão ``cancelar'', pois o link é passado pela \emph{view} correspondente.
+
+
+\subsection{form\_success.html}
+\label{templates:form-success-html}
+Template que extende o template \emph{base.html} e é responsável por montar a estrutura da tela de sucesso no caso de alguma ação (criação,edição ou remoção) ter sido executada com sucesso.
+
+Aqui também existe um script Javascript que facilita a criação do botão ``voltar'', pois o link é passado pela \emph{view} correspondente.
+
+
+\subsection{login.html}
+\label{templates:login-html}
+Template que é responsável por montar o formulário de login do usuário.
+
+
 \section{Bibliotecas externas}
 \label{bibliotecas:bibliotecas-externas}\label{bibliotecas::doc}
-
-\subsection{1. Introdução}
-\label{bibliotecas:introducao}
 Nessa seção listaremos as bibliotecas auxiliares ao projeto, que já vem previamente instaladas e configuradas. O desenvolvedor deve ter conhecimento delas caso precise utilizá-las futuramente.
 
 Cada biblioteca utilizada possui também uma documentação própria, que pode elucidar dúvidas mais específicas.
 
 
-\subsection{2. Twitter Bootstrap}
+\subsection{Twitter Bootstrap}
 \label{bibliotecas:twitter-bootstrap}
 \href{http://twitter.github.com/bootstrap/}{http://twitter.github.com/bootstrap/}
 
 Utilizado como base da identidade visual do projeto. Embora o Pinax já venha com um template padrão usando o Twitter Bootstrap, foi preferível começar um novo template para fins de customização.
 
 
-\subsection{3. jQuery}
+\subsection{jQuery}
 \label{bibliotecas:jquery}
 \href{http://jquery.com/}{http://jquery.com/}
 
 É o framework Javascript utilizado no projeto.
 
 
+\subsection{Sphinx}
+\label{bibliotecas:sphinx}
+\href{http://sphinx.pocoo.org/}{http://sphinx.pocoo.org/}
+
+Biblioteca utilizada para gerar essa documentação.
+
+
 \section{Futuras implementações}
 \label{futuro::doc}\label{futuro:futuras-implementacoes}
+A base do projeto PABX-IP se encontra na manipulação de arquivos, por isso, sugerimos o uso da biblioteca \emph{fileinput} para tal:  \href{http://docs.python.org/library/fileinput.html}{http://docs.python.org/library/fileinput.html}
+
+Conforme visto no StackOverflow:
+\href{http://stackoverflow.com/questions/4746190/find-and-replace-within-a-text-file}{http://stackoverflow.com/questions/4746190/find-and-replace-within-a-text-file}
+
 
 \renewcommand{\indexname}{Índice de Módulos do Python}
 \begin{theindex}

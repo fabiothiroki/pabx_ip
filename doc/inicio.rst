@@ -2,13 +2,10 @@
 Para começar
 ============
 
--------------
-1. Introdução
--------------
 Nessa seção será mostrado as ferramentas que são pré-requisitos para desenvolvimento do projeto. Também mostraremos como instalá-las e configurá-las corretamente, para que o desenvolvedor já consiga ao menos rodar o PABX-IP em sua máquina local.
 
 ------------------------------
-2. Ambiente de Desenvolvimento
+Ambiente de Desenvolvimento
 ------------------------------
 * Sistema Operacional (recomendável): Ubuntu
 * Python 2.7 (a versão 3 é incompatível com outras bibliotecas)
@@ -17,13 +14,13 @@ Nessa seção será mostrado as ferramentas que são pré-requisitos para desenv
 * Conexão com a internet
 
 --------------------------------------------
-3. Instalação do ambiente de desenvolvimento
+Instalação do ambiente de desenvolvimento
 --------------------------------------------
 
 Esse tutorial foi feito no Ubuntu 10.04, usando o repositório git onde o código estava sendo versionado na época em que essa documentação foi feita. Caso o desenvolvedor já possua o código fonte, pule a parte 1.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-3.1. Instalação do git e clone do repositório:
+Instalação do git e clone do repositório:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
 
@@ -33,7 +30,7 @@ Esse tutorial foi feito no Ubuntu 10.04, usando o repositório git onde o códig
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-3.2. Instalação e ativação do virtualenv:
+Instalação e ativação do virtualenv:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 O virtualenv é uma ferramenta de criação de ambientes python isolados. Isso visa facilitar o deploy da aplicação. 
@@ -47,6 +44,8 @@ Antes de mais nada é interessante que todas as bibliotecas do OS sejam atualiza
     $ sudo apt-get update
     $ sudo apt-get dist-update
 
+Agora então vamos a instalação do virtualenv:
+
 ::
 
     $ sudo apt-get install python-pip
@@ -58,7 +57,7 @@ Antes de mais nada é interessante que todas as bibliotecas do OS sejam atualiza
     $ source pabx-env/bin/activate
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-3.3. Instalação do Pinax e outros apps:
+Instalação do Pinax e outros apps:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Pinax é uma plataforma baseada no Django que contém diversos apps pré-instalados.
@@ -74,7 +73,7 @@ Para mais informações consulte: http://pinaxproject.com/
     (pabx-env)$ pip install pinax_theme_bootstrap
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-3.4. Instalação do Django:
+Instalação do Django:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Django é o framework web utilizado no projeto.
@@ -86,7 +85,7 @@ Para mais informações consulte: http://djangoproject.com/
     (pabx-env)$ pip install Django
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-3.5. Instalação do Django South:
+Instalação do Django South:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 O South é utilizado para implementar o controle da estrutura e migração do banco de dados. Seus arquivos estão na pasta 'south', no diretório raiz do projeto.
@@ -98,7 +97,7 @@ Para mais informações consulte: http://south.aeracode.org/
     (pabx-env)$ pip install south
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-3.6. Conclusão:
+Conclusão:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Por fim utilize o seguinte comando no diretório raiz do projeto para ligar o servidor de desenvolvimento:
@@ -121,3 +120,14 @@ A seguinte mensagem deverá ser retornada no terminal em caso de sucesso:
 Entre com o endereço http://127.0.0.1:8000/ no seu navegador para acessar a interface web do projeto.
 
 O banco de dados padrão do projeto vem com o usuário super-admin com login *root* e senha *1234*.
+
+------------------------------
+Máquina Virtual
+------------------------------
+
+Para facilitar a instalação do ambiente de desenvolvimento foi configurada uma máquina virtual já com as bibliotecas instaladas. O nome de usuário e a sua senha de root respectiva são:
+
+    * *username:* pabx
+    * *password:* pabx
+
+O diretório do projeto está contido em "~/pabx_ip/".

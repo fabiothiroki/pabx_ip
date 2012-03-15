@@ -1,12 +1,12 @@
 =====================
-Templates Padr„o
+Templates Padr√£o
 =====================
 
-Templates s„o usados pelo Django para exibir o conte˙do em quest„o para o usu·rio, ou seja, È o que o usu·rio vÍ de fato.
+Templates s√£o usados pelo Django para exibir o conte√∫do em quest√£o para o usu√°rio, ou seja, √© o que o usu√°rio v√™ de fato.
 
-Os templates padr„o s„o os arquivos html contidos na pasta *templates* logo na raiz do projeto. Apenas alguns arquivos dentre outros contidos nessa mesma pasta s„o utilizados no projeto, sendo que os n„o usados s„o arquivos criados automaticamente pelo Pinax.
+Os templates padr√£o s√£o os arquivos html contidos na pasta *templates* logo na raiz do projeto. Apenas alguns arquivos dentre outros contidos nessa mesma pasta s√£o utilizados no projeto, sendo que os n√£o usados s√£o arquivos criados automaticamente pelo Pinax.
 
-Ser„o listados aqui os templates utilizados:
+Ser√£o listados aqui os templates utilizados:
 
 	* base.html
 	* crud.html
@@ -19,42 +19,42 @@ Ser„o listados aqui os templates utilizados:
 base.html
 --------------------
 
-… o template base do projeto, que utiliza a mesma estrutura do *fluid layout* do Twitter bootstrap, com alguma modificaÁ„o para fixar a barra superior. Aqui fica definido o *menu*, o *header* e o *footer*. O conte˙do que eventualmente ser· carregado na parte do meio, ser· parte de outro template "filho" deste.
+√â o template base do projeto, que utiliza a mesma estrutura do *fluid layout* do Twitter bootstrap, com alguma modifica√ß√£o para fixar a barra superior. Aqui fica definido o *menu*, o *header* e o *footer*. O conte√∫do que eventualmente ser√° carregado na parte do meio, ser√° parte de outro template "filho" deste.
 
-A vari·vel "highlight" deve ser definida em cada view para manter o link do menu destacado, na seÁ„o que o usu·rio estiver navegando. Assim como a vari·vel "title" que define o valor da tag html *title*.
+A vari√°vel "highlight" deve ser definida em cada view para manter o link do menu destacado, na se√ß√£o que o usu√°rio estiver navegando. Assim como a vari√°vel "title" que define o valor da tag html *title*.
 	
 --------------------
 crud.html
 --------------------
 
-Template que extende o template *base.html* e È respons·vel por criar as tabelas que dar„o acesso as operaÁıes CRUD (acrÙnimo de Create, Read, Update e Delete em inglÍs).
+Template que extende o template *base.html* e √© respons√°vel por criar as tabelas que dar√£o acesso as opera√ß√µes CRUD (acr√¥nimo de Create, Read, Update e Delete em ingl√™s).
 
 --------------------
 form_create.html
 --------------------
 
-Template que extende o template *base.html* e È respons·vel por montar a estrutura dos formul·rios utilizados por criaÁ„o e ediÁ„o de dados.
+Template que extende o template *base.html* e √© respons√°vel por montar a estrutura dos formul√°rios utilizados por cria√ß√£o e edi√ß√£o de dados.
 
-Aqui tambÈm existe um script Javascript que facilita a criaÁ„o do bot„o "cancelar", pois o link È passado pela *view* correspondente.
+Aqui tamb√©m existe um script Javascript que facilita a cria√ß√£o do bot√£o "cancelar", pois o link √© passado pela *view* correspondente.
 	
 --------------------
 form_delete.html
 --------------------
 
-Template que extende o template *base.html* e È respons·vel por montar a estrutura da tela de confirmaÁ„o de remoÁ„o de algum dado.
+Template que extende o template *base.html* e √© respons√°vel por montar a estrutura da tela de confirma√ß√£o de remo√ß√£o de algum dado.
 
-Aqui tambÈm existe um script Javascript que facilita a criaÁ„o do bot„o "cancelar", pois o link È passado pela *view* correspondente.
+Aqui tamb√©m existe um script Javascript que facilita a cria√ß√£o do bot√£o "cancelar", pois o link √© passado pela *view* correspondente.
 
 --------------------
 form_success.html
 --------------------
 
-Template que extende o template *base.html* e È respons·vel por montar a estrutura da tela de sucesso no caso de alguma aÁ„o (criaÁ„o,ediÁ„o ou remoÁ„o) ter sido executada com sucesso.
+Template que extende o template *base.html* e √© respons√°vel por montar a estrutura da tela de sucesso no caso de alguma a√ß√£o (cria√ß√£o,edi√ß√£o ou remo√ß√£o) ter sido executada com sucesso.
 
-Aqui tambÈm existe um script Javascript que facilita a criaÁ„o do bot„o "voltar", pois o link È passado pela *view* correspondente.
+Aqui tamb√©m existe um script Javascript que facilita a cria√ß√£o do bot√£o "voltar", pois o link √© passado pela *view* correspondente.
 
 --------------------
 login.html
 --------------------
 
-Template que È respons·vel por montar o formul·rio de login do usu·rio.
+Template que √© respons√°vel por montar o formul√°rio de login do usu√°rio.
