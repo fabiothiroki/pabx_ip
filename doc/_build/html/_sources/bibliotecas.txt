@@ -25,4 +25,4 @@ Sphinx
 ------
 http://sphinx.pocoo.org/
 
-Biblioteca utilizada para gerar essa documentação.
+Biblioteca utilizada para gerar essa documentação, cujo código fonte se encontra na pasta "doc" dentro da pasta raiz do projeto.

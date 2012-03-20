@@ -59,7 +59,11 @@
 <h1>Visão geral do código<a class="headerlink" href="#visao-geral-do-codigo" title="Link permanente para este título">¶</a></h1>
 <p>A linguagem escolhida (Python) para o desenvolvimento do projeto prioriza a legibilidade do código sobre a velocidade, bem como o framework Django. Assim, um desenvolvedor com uma certa experiência em Python não terá maiores problemas para entender o código, mesmo porque o mesmo se encontra num estágio inicial.</p>
 <p>Ainda sim esse documento visa explicar o código mais detalhadamente e ao mesmo tempo dando alguma noção de Django.</p>
-<p>Para que o desenvolvedor não fique confuso com a quantidade de arquivos do projeto, será listado aqui os apps desenvolvidos de fato (cada app corresponde a uma pasta na raiz do projeto):</p>
+<p>Além dos arquivos <em>urls.py</em> e <em>settings.py</em> nenhum dos outros arquivos na pasta raiz do projeto foi codificado de fato anteriormente, mas foi gerado automaticamente pelo framework e suas ferramentas.</p>
+<p>Os outros arquivos codificados se encontram dentro das pastas dos respectivos Apps, que serão explicados abaixo.</p>
+<div class="section" id="apps-do-django">
+<h2>Apps do Django<a class="headerlink" href="#apps-do-django" title="Link permanente para este título">¶</a></h2>
+<p>Os apps desenvolvidos anteriormente foram (cada app corresponde a uma pasta na raiz do projeto):</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>Accounts</strong></li>
@@ -68,20 +72,50 @@
 <li><strong>Smtp</strong></li>
 </ul>
 </div></blockquote>
-<p>Além dos arquivos <em>urls.py</em> e <em>settings.py</em> nenhum dos outros arquivos foi codificado de fato anteriormente, mas foi gerado automaticamente pelo framework e suas ferramentas.</p>
+<p>Cada App do Django corresponde a um objeto assim como na programação orientada a objetos, então cada um deles possui métodos e atributos próprios seguindo uma arquitetura de software MVC adaptada.</p>
 <p>O código desenvolvido no projeto está seguindo a estrutura de apps do Django, assim como a documentação relativa a essa parte.</p>
 <p>Cada App documentado contém seu arquivos numa pasta de mesmo nome na raiz principal do projeto. Assim, a estrutura da documentação de cada app passa a ser a seguinte:</p>
+<div class="section" id="formularios">
+<h3>Formulários<a class="headerlink" href="#formularios" title="Link permanente para este título">¶</a></h3>
+<p>Relativo ao arquivo <em>forms.py</em>, é responsável por criar as classes de formulários, indicando quais campos devem ser incluídos e sua validação. É um arquivo opcional, ou seja, ele existirá somente se o App precisar.</p>
+</div>
+<div class="section" id="modelos">
+<h3>Modelos<a class="headerlink" href="#modelos" title="Link permanente para este título">¶</a></h3>
+<p>Relativo ao arquivo <em>models.py</em>, é justamente o <em>Model</em> da arquitetura MVC.</p>
+</div>
+<div class="section" id="views">
+<h3>Views<a class="headerlink" href="#views" title="Link permanente para este título">¶</a></h3>
+<p>Relativo ao arquivo <em>views.py</em>. Embora o nome seja confuso esse arquivo é mais parecido com o <em>Controller</em> da arquitetura MVC.</p>
+<p>É reponsável por:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Formulários: relativo ao arquivo <em>forms.py</em></li>
-<li>Modelos: relativo ao arquivo <em>models.py</em></li>
-<li>Views: relativo ao arquivo <em>views.py</em></li>
-<li>Decorators: relativo ao arquivo <em>decorators.py</em> (opcional)</li>
-<li>Templates: relativo aos arquivos dentro da pasta &#8220;templates&#8221; (opcional)</li>
+<li>Toda lógica de negócios (direta ou indireta)</li>
+<li>Atribuir variáveis a serem exibidas num <em>template</em></li>
+<li>Fazer chamadas ao banco de dados</li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="decorators">
+<h3>Decorators<a class="headerlink" href="#decorators" title="Link permanente para este título">¶</a></h3>
+<p>Relativo ao arquivo <em>decorators.py</em>. Aqui são declaradas algumas funções de uso geral que são chamadas diversas vezes nas views. É um arquivo opcional, ou seja, ele existirá somente se o App precisar.</p>
+</div>
+<div class="section" id="templates">
+<h3>Templates<a class="headerlink" href="#templates" title="Link permanente para este título">¶</a></h3>
+<p>Relativo aos arquivos dentro da pasta &#8220;templates&#8221;. Embora o nome seja confuso esse arquivo é mais pareciso com a <em>View</em> da arquitetura MVC, pois é aqui onde a interface do usuário é renderizada a partir de elementos construídos no arquivo <em>views.py</em></p>
 <p>Eventualmente algum App possa precisar de arquivos templates adicionais que estarão contidos na pasta &#8220;templates&#8221; dentro da pasta do App. Além desses arquivos templates, os outros templates padrão estarão contidos na pasta &#8220;templates&#8221; dentro da pasta raiz.</p>
-<p>O mesmo vale para os <em>decorators</em>, nem todos os apps possuem o arquivo <em>decorators.py</em> em seu diretório</p>
+</div>
+</div>
+<div class="section" id="integracao-com-o-asterisk">
+<h2>Integração com o Asterisk<a class="headerlink" href="#integracao-com-o-asterisk" title="Link permanente para este título">¶</a></h2>
+<p>Por enquanto a aplicação web do PABX-IP não está integrado com o Asterisk (o software responsável pelo PBX). Para isso seria necessário escrever os dados necessários nos arquivos de configurações utilizados pelo Asterisk, usando sua própria sintaxe.</p>
+<p>A integração entre a aplicação web e o Asterisk foi pensada da seguinte forma:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Todas as configurações seriam salvas no banco de dados da aplicação web, evitando assim de ter que &#8220;carregar&#8221; essas configurações a partir do Asterisk toda vez que a aplicação web fosse acessada.</li>
+<li>Qualquer alteraçao dessas configurações seria primeiramente salva no banco de dados e em seguida encaminhada para o Asterisk.</li>
+</ul>
+</div></blockquote>
+</div>
 </div>
 
 
@@ -90,6 +124,22 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Visão geral do código</a><ul>
+<li><a class="reference internal" href="#apps-do-django">Apps do Django</a><ul>
+<li><a class="reference internal" href="#formularios">Formulários</a></li>
+<li><a class="reference internal" href="#modelos">Modelos</a></li>
+<li><a class="reference internal" href="#views">Views</a></li>
+<li><a class="reference internal" href="#decorators">Decorators</a></li>
+<li><a class="reference internal" href="#templates">Templates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#integracao-com-o-asterisk">Integração com o Asterisk</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Tópico anterior</h4>
   <p class="topless"><a href="inicio.html"
                         title="capítulo anterior">Para começar</a></p>
