@@ -2,77 +2,77 @@
 \def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
 
   \bigletter A
-  \item accounts.decorators (m\IeC {\'o}dulo), \hyperpage{9}
-  \item accounts.forms (m\IeC {\'o}dulo), \hyperpage{8}
-  \item accounts.models (m\IeC {\'o}dulo), \hyperpage{8}
-  \item accounts.views (m\IeC {\'o}dulo), \hyperpage{8}
+  \item accounts.decorators (m\IeC {\'o}dulo), \hyperpage{11}
+  \item accounts.forms (m\IeC {\'o}dulo), \hyperpage{10}
+  \item accounts.models (m\IeC {\'o}dulo), \hyperpage{9}
+  \item accounts.views (m\IeC {\'o}dulo), \hyperpage{10}
 
   \indexspace
   \bigletter C
-  \item configure() (no m\IeC {\'o}dulo smtp.views), \hyperpage{12}
-  \item create() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
-  \item create() (no m\IeC {\'o}dulo groups.views), \hyperpage{11}
-  \item create() (no m\IeC {\'o}dulo skypelist.views), \hyperpage{11}
+  \item configure() (no m\IeC {\'o}dulo smtp.views), \hyperpage{14}
+  \item create() (no m\IeC {\'o}dulo accounts.views), \hyperpage{10}
+  \item create() (no m\IeC {\'o}dulo groups.views), \hyperpage{12}
+  \item create() (no m\IeC {\'o}dulo skypelist.views), \hyperpage{13}
 
   \indexspace
   \bigletter D
-  \item delete() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
+  \item delete() (no m\IeC {\'o}dulo accounts.views), \hyperpage{10}
 
   \indexspace
   \bigletter E
-  \item edit() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
-  \item edit() (no m\IeC {\'o}dulo skypelist.views), \hyperpage{11}
-  \item edit\_self() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
-  \item encrypt() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
+  \item edit() (no m\IeC {\'o}dulo accounts.views), \hyperpage{10}
+  \item edit() (no m\IeC {\'o}dulo skypelist.views), \hyperpage{13}
+  \item edit\_self() (no m\IeC {\'o}dulo accounts.views), \hyperpage{10}
+  \item encrypt() (no m\IeC {\'o}dulo accounts.views), \hyperpage{11}
 
   \indexspace
   \bigletter G
-  \item Group (classe em groups.models), \hyperpage{10}
-  \item GroupForm (classe em groups.forms), \hyperpage{10}
-  \item groups.forms (m\IeC {\'o}dulo), \hyperpage{10}
-  \item groups.models (m\IeC {\'o}dulo), \hyperpage{10}
-  \item groups.views (m\IeC {\'o}dulo), \hyperpage{11}
+  \item Group (classe em groups.models), \hyperpage{11}
+  \item GroupForm (classe em groups.forms), \hyperpage{12}
+  \item groups.forms (m\IeC {\'o}dulo), \hyperpage{12}
+  \item groups.models (m\IeC {\'o}dulo), \hyperpage{11}
+  \item groups.views (m\IeC {\'o}dulo), \hyperpage{12}
 
   \indexspace
   \bigletter I
-  \item index() (no m\IeC {\'o}dulo groups.views), \hyperpage{11}
-  \item index() (no m\IeC {\'o}dulo skypelist.views), \hyperpage{11}
-  \item index() (no m\IeC {\'o}dulo smtp.views), \hyperpage{12}
-  \item is\_admin() (no m\IeC {\'o}dulo accounts.decorators), \hyperpage{9}
+  \item index() (no m\IeC {\'o}dulo groups.views), \hyperpage{12}
+  \item index() (no m\IeC {\'o}dulo skypelist.views), \hyperpage{13}
+  \item index() (no m\IeC {\'o}dulo smtp.views), \hyperpage{14}
+  \item is\_admin() (no m\IeC {\'o}dulo accounts.decorators), \hyperpage{11}
 
   \indexspace
   \bigletter L
-  \item login() (no m\IeC {\'o}dulo accounts.views), \hyperpage{8}
-  \item logout() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
+  \item login() (no m\IeC {\'o}dulo accounts.views), \hyperpage{10}
+  \item logout() (no m\IeC {\'o}dulo accounts.views), \hyperpage{10}
 
   \indexspace
   \bigletter O
-  \item OnlyUserForm (classe em accounts.forms), \hyperpage{8}
+  \item OnlyUserForm (classe em accounts.forms), \hyperpage{10}
 
   \indexspace
   \bigletter P
-  \item PassResetForm (classe em accounts.forms), \hyperpage{8}
-  \item password\_reset() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
+  \item PassResetForm (classe em accounts.forms), \hyperpage{10}
+  \item password\_reset() (no m\IeC {\'o}dulo accounts.views), \hyperpage{10}
 
   \indexspace
   \bigletter S
-  \item save\_or\_update() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
-  \item server (classe em smtp.server), \hyperpage{12}
-  \item settings() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
-  \item skypeform (classe em skypelist.forms), \hyperpage{11}
-  \item skypelist.forms (m\IeC {\'o}dulo), \hyperpage{11}
-  \item skypelist.skypeuser (m\IeC {\'o}dulo), \hyperpage{11}
-  \item skypelist.views (m\IeC {\'o}dulo), \hyperpage{11}
-  \item skypeuser (classe em skypelist.skypeuser), \hyperpage{11}
-  \item smtp.forms (m\IeC {\'o}dulo), \hyperpage{12}
-  \item smtp.server (m\IeC {\'o}dulo), \hyperpage{12}
-  \item smtp.views (m\IeC {\'o}dulo), \hyperpage{12}
-  \item smtpform (classe em smtp.forms), \hyperpage{12}
+  \item save\_or\_update() (no m\IeC {\'o}dulo accounts.views), \hyperpage{10}
+  \item server (classe em smtp.server), \hyperpage{13}
+  \item settings() (no m\IeC {\'o}dulo accounts.views), \hyperpage{10}
+  \item skypeform (classe em skypelist.forms), \hyperpage{13}
+  \item skypelist.forms (m\IeC {\'o}dulo), \hyperpage{13}
+  \item skypelist.skypeuser (m\IeC {\'o}dulo), \hyperpage{12}
+  \item skypelist.views (m\IeC {\'o}dulo), \hyperpage{13}
+  \item skypeuser (classe em skypelist.skypeuser), \hyperpage{12}
+  \item smtp.forms (m\IeC {\'o}dulo), \hyperpage{14}
+  \item smtp.server (m\IeC {\'o}dulo), \hyperpage{13}
+  \item smtp.views (m\IeC {\'o}dulo), \hyperpage{14}
+  \item smtpform (classe em smtp.forms), \hyperpage{14}
 
   \indexspace
   \bigletter U
-  \item unencrypt() (no m\IeC {\'o}dulo accounts.views), \hyperpage{9}
-  \item UserForm (classe em accounts.forms), \hyperpage{8}
-  \item UserProfile (classe em accounts.models), \hyperpage{8}
+  \item unencrypt() (no m\IeC {\'o}dulo accounts.views), \hyperpage{11}
+  \item UserForm (classe em accounts.forms), \hyperpage{10}
+  \item UserProfile (classe em accounts.models), \hyperpage{9}
 
 \end{theindex}

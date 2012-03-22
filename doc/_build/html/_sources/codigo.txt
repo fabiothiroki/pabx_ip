@@ -39,6 +39,10 @@ Modelos
 
 Relativo ao arquivo *models.py*, é justamente o *Model* da arquitetura MVC.
 
+Segue MER atual da aplicação web:
+
+.. image:: MER_PABX.png
+
 ^^^^^^^^^^^^^^^
 Views
 ^^^^^^^^^^^^^^^

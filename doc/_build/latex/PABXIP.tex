@@ -13,7 +13,7 @@
 
 
 \title{PABX IP Documentation}
-\date{15/03/2012}
+\date{20/03/2012}
 \release{0.1}
 \author{Fabio Hiroki}
 \newcommand{\sphinxlogo}{}
@@ -277,7 +277,14 @@ A linguagem escolhida (Python) para o desenvolvimento do projeto prioriza a legi
 
 Ainda sim esse documento visa explicar o código mais detalhadamente e ao mesmo tempo dando alguma noção de Django.
 
-Para que o desenvolvedor não fique confuso com a quantidade de arquivos do projeto, será listado aqui os apps desenvolvidos de fato (cada app corresponde a uma pasta na raiz do projeto):
+Além dos arquivos \emph{urls.py} e \emph{settings.py} nenhum dos outros arquivos na pasta raiz do projeto foi codificado de fato anteriormente, mas foi gerado automaticamente pelo framework e suas ferramentas.
+
+Os outros arquivos codificados se encontram dentro das pastas dos respectivos Apps, que serão explicados abaixo.
+
+
+\subsection{Apps do Django}
+\label{codigo:apps-do-django}
+Os apps desenvolvidos anteriormente foram (cada app corresponde a uma pasta na raiz do projeto):
 \begin{itemize}
 \item {} 
 \textbf{Accounts}
@@ -293,32 +300,70 @@ Para que o desenvolvedor não fique confuso com a quantidade de arquivos do proj
 
 \end{itemize}
 
-Além dos arquivos \emph{urls.py} e \emph{settings.py} nenhum dos outros arquivos foi codificado de fato anteriormente, mas foi gerado automaticamente pelo framework e suas ferramentas.
+Cada App do Django corresponde a um objeto assim como na programação orientada a objetos, então cada um deles possui métodos e atributos próprios seguindo uma arquitetura de software MVC adaptada.
 
 O código desenvolvido no projeto está seguindo a estrutura de apps do Django, assim como a documentação relativa a essa parte.
 
 Cada App documentado contém seu arquivos numa pasta de mesmo nome na raiz principal do projeto. Assim, a estrutura da documentação de cada app passa a ser a seguinte:
+
+
+\subsubsection{Formulários}
+\label{codigo:formularios}
+Relativo ao arquivo \emph{forms.py}, é responsável por criar as classes de formulários, indicando quais campos devem ser incluídos e sua validação. É um arquivo opcional, ou seja, ele existirá somente se o App precisar.
+
+
+\subsubsection{Modelos}
+\label{codigo:modelos}
+Relativo ao arquivo \emph{models.py}, é justamente o \emph{Model} da arquitetura MVC.
+
+Segue MER atual da aplicação web:
+
+\includegraphics{MER_PABX.png}
+
+
+\subsubsection{Views}
+\label{codigo:views}
+Relativo ao arquivo \emph{views.py}. Embora o nome seja confuso esse arquivo é mais parecido com o \emph{Controller} da arquitetura MVC.
+
+É reponsável por:
 \begin{itemize}
 \item {} 
-Formulários: relativo ao arquivo \emph{forms.py}
+Toda lógica de negócios (direta ou indireta)
 
 \item {} 
-Modelos: relativo ao arquivo \emph{models.py}
+Atribuir variáveis a serem exibidas num \emph{template}
 
 \item {} 
-Views: relativo ao arquivo \emph{views.py}
-
-\item {} 
-Decorators: relativo ao arquivo \emph{decorators.py} (opcional)
-
-\item {} 
-Templates: relativo aos arquivos dentro da pasta ``templates'' (opcional)
+Fazer chamadas ao banco de dados
 
 \end{itemize}
 
+
+\subsubsection{Decorators}
+\label{codigo:decorators}
+Relativo ao arquivo \emph{decorators.py}. Aqui são declaradas algumas funções de uso geral que são chamadas diversas vezes nas views. É um arquivo opcional, ou seja, ele existirá somente se o App precisar.
+
+
+\subsubsection{Templates}
+\label{codigo:templates}
+Relativo aos arquivos dentro da pasta ``templates''. Embora o nome seja confuso esse arquivo é mais pareciso com a \emph{View} da arquitetura MVC, pois é aqui onde a interface do usuário é renderizada a partir de elementos construídos no arquivo \emph{views.py}
+
 Eventualmente algum App possa precisar de arquivos templates adicionais que estarão contidos na pasta ``templates'' dentro da pasta do App. Além desses arquivos templates, os outros templates padrão estarão contidos na pasta ``templates'' dentro da pasta raiz.
 
-O mesmo vale para os \emph{decorators}, nem todos os apps possuem o arquivo \emph{decorators.py} em seu diretório
+
+\subsection{Integração com o Asterisk}
+\label{codigo:integracao-com-o-asterisk}
+Por enquanto a aplicação web do PABX-IP não está integrado com o Asterisk (o software responsável pelo PBX). Para isso seria necessário escrever os dados necessários nos arquivos de configurações utilizados pelo Asterisk, usando sua própria sintaxe.
+
+A integração entre a aplicação web e o Asterisk foi pensada da seguinte forma:
+\begin{itemize}
+\item {} 
+Todas as configurações seriam salvas no banco de dados da aplicação web, evitando assim de ter que ``carregar'' essas configurações a partir do Asterisk toda vez que a aplicação web fosse acessada.
+
+\item {} 
+Qualquer alteraçao dessas configurações seria primeiramente salva no banco de dados e em seguida encaminhada para o Asterisk.
+
+\end{itemize}
 
 
 \section{App Accounts}
@@ -846,7 +891,7 @@ Utilizado como base da identidade visual do projeto. Embora o Pinax já venha co
 \label{bibliotecas:sphinx}
 \href{http://sphinx.pocoo.org/}{http://sphinx.pocoo.org/}
 
-Biblioteca utilizada para gerar essa documentação.
+Biblioteca utilizada para gerar essa documentação, cujo código fonte se encontra na pasta ``doc'' dentro da pasta raiz do projeto.
 
 
 \section{Futuras implementações}

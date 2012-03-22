@@ -13,35 +13,42 @@
 \contentsline {subsubsection}{Conclus\IeC {\~a}o:}{6}{subsubsection*.8}
 \contentsline {subsection}{\numberline {3.1.3}M\IeC {\'a}quina Virtual}{7}{subsection.3.1.3}
 \contentsline {section}{\numberline {3.2}Vis\IeC {\~a}o geral do c\IeC {\'o}digo}{7}{section.3.2}
-\contentsline {section}{\numberline {3.3}App Accounts}{8}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Modelos}{8}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Formul\IeC {\'a}rios}{8}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Views}{8}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}Templates}{9}{subsection.3.3.4}
-\contentsline {subsection}{\numberline {3.3.5}Decorators}{9}{subsection.3.3.5}
-\contentsline {section}{\numberline {3.4}App Groups}{10}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Modelos}{10}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Formul\IeC {\'a}rios}{10}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Views}{11}{subsection.3.4.3}
-\contentsline {section}{\numberline {3.5}App Skypelist}{11}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Modelos}{11}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Formul\IeC {\'a}rios}{11}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Views}{11}{subsection.3.5.3}
-\contentsline {section}{\numberline {3.6}App Smtp}{12}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Modelos}{12}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Formul\IeC {\'a}rios}{12}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Views}{12}{subsection.3.6.3}
-\contentsline {section}{\numberline {3.7}Templates Padr\IeC {\~a}o}{12}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}base.html}{13}{subsection.3.7.1}
-\contentsline {subsection}{\numberline {3.7.2}crud.html}{13}{subsection.3.7.2}
-\contentsline {subsection}{\numberline {3.7.3}form\_create.html}{13}{subsection.3.7.3}
-\contentsline {subsection}{\numberline {3.7.4}form\_delete.html}{13}{subsection.3.7.4}
-\contentsline {subsection}{\numberline {3.7.5}form\_success.html}{13}{subsection.3.7.5}
-\contentsline {subsection}{\numberline {3.7.6}login.html}{14}{subsection.3.7.6}
-\contentsline {section}{\numberline {3.8}Bibliotecas externas}{14}{section.3.8}
-\contentsline {subsection}{\numberline {3.8.1}Twitter Bootstrap}{14}{subsection.3.8.1}
-\contentsline {subsection}{\numberline {3.8.2}jQuery}{14}{subsection.3.8.2}
-\contentsline {subsection}{\numberline {3.8.3}Sphinx}{14}{subsection.3.8.3}
-\contentsline {section}{\numberline {3.9}Futuras implementa\IeC {\c c}\IeC {\~o}es}{14}{section.3.9}
-\contentsline {chapter}{\IeC {\'I}ndice de M\IeC {\'o}dulos do Python}{15}{section*.38}
-\contentsline {chapter}{\IeC {\'I}ndice}{17}{section*.39}
+\contentsline {subsection}{\numberline {3.2.1}Apps do Django}{7}{subsection.3.2.1}
+\contentsline {subsubsection}{Formul\IeC {\'a}rios}{8}{subsubsection*.9}
+\contentsline {subsubsection}{Modelos}{8}{subsubsection*.10}
+\contentsline {subsubsection}{Views}{8}{subsubsection*.11}
+\contentsline {subsubsection}{Decorators}{9}{subsubsection*.12}
+\contentsline {subsubsection}{Templates}{9}{subsubsection*.13}
+\contentsline {subsection}{\numberline {3.2.2}Integra\IeC {\c c}\IeC {\~a}o com o Asterisk}{9}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}App Accounts}{9}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Modelos}{9}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Formul\IeC {\'a}rios}{10}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Views}{10}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Templates}{11}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.5}Decorators}{11}{subsection.3.3.5}
+\contentsline {section}{\numberline {3.4}App Groups}{11}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Modelos}{11}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Formul\IeC {\'a}rios}{12}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Views}{12}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}App Skypelist}{12}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Modelos}{12}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Formul\IeC {\'a}rios}{13}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Views}{13}{subsection.3.5.3}
+\contentsline {section}{\numberline {3.6}App Smtp}{13}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Modelos}{13}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Formul\IeC {\'a}rios}{14}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}Views}{14}{subsection.3.6.3}
+\contentsline {section}{\numberline {3.7}Templates Padr\IeC {\~a}o}{14}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}base.html}{14}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}crud.html}{14}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.3}form\_create.html}{15}{subsection.3.7.3}
+\contentsline {subsection}{\numberline {3.7.4}form\_delete.html}{15}{subsection.3.7.4}
+\contentsline {subsection}{\numberline {3.7.5}form\_success.html}{15}{subsection.3.7.5}
+\contentsline {subsection}{\numberline {3.7.6}login.html}{15}{subsection.3.7.6}
+\contentsline {section}{\numberline {3.8}Bibliotecas externas}{15}{section.3.8}
+\contentsline {subsection}{\numberline {3.8.1}Twitter Bootstrap}{15}{subsection.3.8.1}
+\contentsline {subsection}{\numberline {3.8.2}jQuery}{15}{subsection.3.8.2}
+\contentsline {subsection}{\numberline {3.8.3}Sphinx}{16}{subsection.3.8.3}
+\contentsline {section}{\numberline {3.9}Futuras implementa\IeC {\c c}\IeC {\~o}es}{16}{section.3.9}
+\contentsline {chapter}{\IeC {\'I}ndice de M\IeC {\'o}dulos do Python}{17}{section*.43}
+\contentsline {chapter}{\IeC {\'I}ndice}{19}{section*.44}

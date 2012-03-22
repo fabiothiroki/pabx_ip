@@ -1,42 +1,42 @@
-\indexentry{accounts.models (m\IeC {\'o}dulo)|hyperpage}{8}
-\indexentry{UserProfile (classe em accounts.models)|hyperpage}{8}
-\indexentry{accounts.forms (m\IeC {\'o}dulo)|hyperpage}{8}
-\indexentry{UserForm (classe em accounts.forms)|hyperpage}{8}
-\indexentry{OnlyUserForm (classe em accounts.forms)|hyperpage}{8}
-\indexentry{PassResetForm (classe em accounts.forms)|hyperpage}{8}
-\indexentry{accounts.views (m\IeC {\'o}dulo)|hyperpage}{8}
-\indexentry{login() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{8}
-\indexentry{logout() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{9}
-\indexentry{settings() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{9}
-\indexentry{create() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{9}
-\indexentry{edit() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{9}
-\indexentry{delete() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{9}
-\indexentry{edit\_self() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{9}
-\indexentry{save\_or\_update() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{9}
-\indexentry{password\_reset() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{9}
-\indexentry{encrypt() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{9}
-\indexentry{unencrypt() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{9}
-\indexentry{accounts.decorators (m\IeC {\'o}dulo)|hyperpage}{9}
-\indexentry{is\_admin() (no m\IeC {\'o}dulo accounts.decorators)|hyperpage}{9}
-\indexentry{groups.models (m\IeC {\'o}dulo)|hyperpage}{10}
-\indexentry{Group (classe em groups.models)|hyperpage}{10}
-\indexentry{groups.forms (m\IeC {\'o}dulo)|hyperpage}{10}
-\indexentry{GroupForm (classe em groups.forms)|hyperpage}{10}
-\indexentry{groups.views (m\IeC {\'o}dulo)|hyperpage}{11}
-\indexentry{index() (no m\IeC {\'o}dulo groups.views)|hyperpage}{11}
-\indexentry{create() (no m\IeC {\'o}dulo groups.views)|hyperpage}{11}
-\indexentry{skypelist.skypeuser (m\IeC {\'o}dulo)|hyperpage}{11}
-\indexentry{skypeuser (classe em skypelist.skypeuser)|hyperpage}{11}
-\indexentry{skypelist.forms (m\IeC {\'o}dulo)|hyperpage}{11}
-\indexentry{skypeform (classe em skypelist.forms)|hyperpage}{11}
-\indexentry{skypelist.views (m\IeC {\'o}dulo)|hyperpage}{11}
-\indexentry{index() (no m\IeC {\'o}dulo skypelist.views)|hyperpage}{11}
-\indexentry{create() (no m\IeC {\'o}dulo skypelist.views)|hyperpage}{11}
-\indexentry{edit() (no m\IeC {\'o}dulo skypelist.views)|hyperpage}{11}
-\indexentry{smtp.server (m\IeC {\'o}dulo)|hyperpage}{12}
-\indexentry{server (classe em smtp.server)|hyperpage}{12}
-\indexentry{smtp.forms (m\IeC {\'o}dulo)|hyperpage}{12}
-\indexentry{smtpform (classe em smtp.forms)|hyperpage}{12}
-\indexentry{smtp.views (m\IeC {\'o}dulo)|hyperpage}{12}
-\indexentry{index() (no m\IeC {\'o}dulo smtp.views)|hyperpage}{12}
-\indexentry{configure() (no m\IeC {\'o}dulo smtp.views)|hyperpage}{12}
+\indexentry{accounts.models (m\IeC {\'o}dulo)|hyperpage}{9}
+\indexentry{UserProfile (classe em accounts.models)|hyperpage}{9}
+\indexentry{accounts.forms (m\IeC {\'o}dulo)|hyperpage}{10}
+\indexentry{UserForm (classe em accounts.forms)|hyperpage}{10}
+\indexentry{OnlyUserForm (classe em accounts.forms)|hyperpage}{10}
+\indexentry{PassResetForm (classe em accounts.forms)|hyperpage}{10}
+\indexentry{accounts.views (m\IeC {\'o}dulo)|hyperpage}{10}
+\indexentry{login() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{10}
+\indexentry{logout() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{10}
+\indexentry{settings() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{10}
+\indexentry{create() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{10}
+\indexentry{edit() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{10}
+\indexentry{delete() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{10}
+\indexentry{edit\_self() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{10}
+\indexentry{save\_or\_update() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{10}
+\indexentry{password\_reset() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{10}
+\indexentry{encrypt() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{11}
+\indexentry{unencrypt() (no m\IeC {\'o}dulo accounts.views)|hyperpage}{11}
+\indexentry{accounts.decorators (m\IeC {\'o}dulo)|hyperpage}{11}
+\indexentry{is\_admin() (no m\IeC {\'o}dulo accounts.decorators)|hyperpage}{11}
+\indexentry{groups.models (m\IeC {\'o}dulo)|hyperpage}{11}
+\indexentry{Group (classe em groups.models)|hyperpage}{11}
+\indexentry{groups.forms (m\IeC {\'o}dulo)|hyperpage}{12}
+\indexentry{GroupForm (classe em groups.forms)|hyperpage}{12}
+\indexentry{groups.views (m\IeC {\'o}dulo)|hyperpage}{12}
+\indexentry{index() (no m\IeC {\'o}dulo groups.views)|hyperpage}{12}
+\indexentry{create() (no m\IeC {\'o}dulo groups.views)|hyperpage}{12}
+\indexentry{skypelist.skypeuser (m\IeC {\'o}dulo)|hyperpage}{12}
+\indexentry{skypeuser (classe em skypelist.skypeuser)|hyperpage}{12}
+\indexentry{skypelist.forms (m\IeC {\'o}dulo)|hyperpage}{13}
+\indexentry{skypeform (classe em skypelist.forms)|hyperpage}{13}
+\indexentry{skypelist.views (m\IeC {\'o}dulo)|hyperpage}{13}
+\indexentry{index() (no m\IeC {\'o}dulo skypelist.views)|hyperpage}{13}
+\indexentry{create() (no m\IeC {\'o}dulo skypelist.views)|hyperpage}{13}
+\indexentry{edit() (no m\IeC {\'o}dulo skypelist.views)|hyperpage}{13}
+\indexentry{smtp.server (m\IeC {\'o}dulo)|hyperpage}{13}
+\indexentry{server (classe em smtp.server)|hyperpage}{13}
+\indexentry{smtp.forms (m\IeC {\'o}dulo)|hyperpage}{14}
+\indexentry{smtpform (classe em smtp.forms)|hyperpage}{14}
+\indexentry{smtp.views (m\IeC {\'o}dulo)|hyperpage}{14}
+\indexentry{index() (no m\IeC {\'o}dulo smtp.views)|hyperpage}{14}
+\indexentry{configure() (no m\IeC {\'o}dulo smtp.views)|hyperpage}{14}
